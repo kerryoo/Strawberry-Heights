@@ -4,27 +4,30 @@ using UnityEngine;
 
 public class UnderwaterPlayer : MonoBehaviour
 {
-    [SerializeField] InputController inputController;
-    [SerializeField] float interactDistance = 5f;
-    
+    public CharacterController controller;
+    public float speed = 12f;
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
-        if (inputController.Interact)
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+
+        Vector3 move = transform.right * x + transform.forward * z;
+        controller.Move(move * speed * Time.deltaTime);
+
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
-            Interact();
+            transform.Translate(0, -speed * Time.deltaTime, 0);
         }
-    }
-
-    private void Move()
-    {
-
-    }
-
-    private void Interact()
-    {
-
+        else if (Input.GetKey(KeyCode.Space))
+        {
+            transform.Translate(0, speed * Time.deltaTime, 0);
+        }
     }
 }
