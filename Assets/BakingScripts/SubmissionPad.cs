@@ -12,6 +12,10 @@ public class SubmissionPad : MonoBehaviour
      */
     private void OnCollisionEnter(Collision collision)
     {
-        
+        if (collision.gameObject.tag == "Pastry")
+        {
+            Pastry pastry = collision.gameObject.GetComponent<Pastry>();
+            bakeryManager.onPastrySubmit(pastry.decorations);
+        }
     }
 }

@@ -4,23 +4,34 @@ using UnityEngine;
 
 public class Pastry : MonoBehaviour
 {
-    public List<Texture> decorations;
-    private new Renderer renderer;
+    [SerializeField] Decoration obj;
 
+    public List<string> decorations = new List<string>();
 
     private void Start()
     {
-        renderer = GetComponent<Renderer>();
+        gameObject.tag = "Pastry";
+        AddDecoration(obj);
+    }
+
+    /*
+     * Just here for testing.
+     */
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.G))
+        {
+            
+        }
     }
 
     /*
      * Adds a texture to the gameobject this script is attached to and the list
      * of decorations.
      */
-    public void AddDecoration(Texture decoration)
+    public void AddDecoration(Decoration decoration)
     {
-        renderer.material.mainTexture = decoration;
-
-        decorations.Add(decoration);
+        decoration.attachToPastry(this.gameObject);
+        decorations.Add(decoration.tag);
     }
 }

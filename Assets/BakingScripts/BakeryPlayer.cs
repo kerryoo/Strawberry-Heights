@@ -16,7 +16,7 @@ public class BakeryPlayer : MonoBehaviour
             gameObject.transform.Rotate(new Vector3(0f, speed, 0f), Space.Self);
         }
 
-        else if (Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(KeyCode.D))
         {
             gameObject.transform.Rotate(new Vector3(0f, -speed, 0f), Space.Self);
         }
