@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class UnderwaterPlayer : MonoBehaviour
 {
-    public CharacterController controller;
-    public float speed = 12f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] CharacterController controller;
+    [SerializeField] float speed;
 
-    // Update is called once per frame
     void Update()
     {
         float x = Input.GetAxis("Horizontal");
