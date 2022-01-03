@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class SubmissionPad : MonoBehaviour
 {
-    [SerializeField] BakeryManager bakeryManager;
+    [SerializeField] BakeryManager bm;
+
+    public void Start()
+    {
+    }
+
     /*
      * When an object touches the submission pad, check if it contains the Pastry
      * script. If it does, call bakeryManager's onPastrySubmit with the pastry's
@@ -15,7 +20,7 @@ public class SubmissionPad : MonoBehaviour
         if (collision.gameObject.tag == "Pastry")
         {
             Pastry pastry = collision.gameObject.GetComponent<Pastry>();
-            bakeryManager.onPastrySubmit(pastry.decorations);
+            bm.onPastrySubmit(pastry.decorations);
         }
     }
 }
