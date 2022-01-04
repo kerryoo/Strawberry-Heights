@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PipeNode
 {
-    string shape; // 4-digit binary indicating the shape of the pipe
-    List<PipeNode> neighbours; // list of node representing North, East, South, West nieghbours
+    string shape; // 4-digit binary indicating the shape of the pipe (int values 0000 to 1111)
+    PipeNode[] neighbours; // array of node representing North, East, South, West nieghbours
 
     // CONSTRUCTOR
     public PipeNode(string shape)
     {
         this.shape = shape;
-        neighbours = new List<PipeNode>(new PipeNode[4]);
+        neighbours = new PipeNode[4];
     }
 
     // PROPERTIES
@@ -22,25 +22,37 @@ public class PipeNode
     }
 
     // Get read-only list of neighbours of the node
-    public IList<PipeNode> Neighbours
+    public PipeNode[] Neighbours
     {
-        get { return neighbours.AsReadOnly(); }
+        get { return neighbours; }
     }
 
     //METHODS
+    // add new neightbour to specified direction (N = 0, E = 1, S = 2, W = 3)
     public void AddNeightbour(PipeNode neighbour, int direction)
     {
-        // add new neightbour to specified direction
+        neighbours[direction] = neighbour;
     }
 
+    // remove all neighbours
     public void RemoveAllNeighbours()
     {
-        // remove all neighbours
+        for(int i = 0; i < neighbours.Length; i++)
+        {
+            neighbours[i] = null;
+        }
     }
 
-
-    public void RotateRight(int amount)
+    //rotate pipe by modifying shapes
+    public void RotateRight()
     {
-        //rotate pipe by modifying shapes
+        RemoveAllNeighbours();
+        shape = shape[3] + shape.Substring(0,3);
+    }
+
+    public void RotateLeft()
+    {
+        RemoveAllNeighbours();
+        shape = shape.Substring(1, 4) + shape[0];
     }
 }
