@@ -17,34 +17,9 @@ public class BakeryManager : GameManager
     [SerializeField] GameObject customerPreFab;
     [SerializeField] Vector3 customerSpawnPoint;
 
-    private Stack<Vector3> line = new Stack<Vector3>();
-    [SerializeField] int lineSeperation = 1;
-
     private void Start()
     {
-        Vector3 subPadPos = GameObject.Find("Submission Pad").transform.position;
-        line.Push(subPadPos + new Vector3(lineSeperation, 0, 0));
-
         spawnCustomer();
-    }
-
-    public Vector3 backOfLine()
-    {
-        if (line.Count > 0)
-        {
-            return line.Peek();
-        }
-        else
-        {
-            Debug.Log("SubmissionPad: Stack is empty, and it should not be.");
-            return gameObject.transform.position + new Vector3(lineSeperation, 0, 0);
-        }
-    }
-
-    public void AddToBack(Vector3 pos)
-    {
-        line.Push(pos + new Vector3(lineSeperation, 0, 0));
-        Debug.Log(line.Peek());
     }
 
     /*
