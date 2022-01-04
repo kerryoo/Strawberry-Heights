@@ -6,7 +6,6 @@ public class BakeryPlayer : MonoBehaviour
 {
     [SerializeField] float speed = 5.0f;
 
-    private bool toggleText = true;
     private string text = "";
 
     /*
@@ -40,9 +39,10 @@ public class BakeryPlayer : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Does the ray intersect any objects in the customers layer are 5 units away
         bool hit = Physics.Raycast(transform.position, transform.forward, out _, 5, 1 << 3);
 
-        // Does the ray intersect any objects in the customers layer
+        
         if (hit && text.Length == 0)
         {
             // (TODO) create NPC dialog for a random order
@@ -57,5 +57,10 @@ public class BakeryPlayer : MonoBehaviour
     void OnGUI()
     {
         GUI.Label(new Rect(10, 10, 250, 20), text);
+    }
+
+    public void setText(string text)
+    {
+        this.text = text;
     }
 }

@@ -4,34 +4,44 @@ using UnityEngine;
 
 public class Pastry : MonoBehaviour
 {
-    [SerializeField] Decoration obj;
-
-    public List<string> decorations = new List<string>();
+    private List<string> decorations = new List<string>();
 
     private void Start()
     {
         gameObject.tag = "Pastry";
-        AddDecoration(obj);
     }
 
-    /*
-     * Just here for testing.
-     */
     private void Update()
     {
-        if (Input.GetKey(KeyCode.G))
+        if (Input.GetKey(KeyCode.E))
         {
-            
+            gameObject.AddComponent<Rigidbody>();
         }
     }
 
-    /*
-     * Adds a texture to the gameobject this script is attached to and the list
-     * of decorations.
-     */
-    public void AddDecoration(Decoration decoration)
+    public List<string> getDecorations()
     {
-        decoration.attachToPastry(this.gameObject);
-        decorations.Add(decoration.tag);
+        return decorations;
     }
+
+    /*
+     * Attaches decoration to the pastry, and appends the name of the
+     * decoration to the list of decorations on the pastry.
+     */
+    public void addDecoration(Decoration decor)
+    {
+        decor.attachToPastry(gameObject);
+        decorations.Add(decor.tag);
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        Decoration decor = collision.gameObject.GetComponent<Decoration>();
+        if (decor)
+        {
+            addDecoration(decor);
+            Destroy(decor.GetComponent<Rigidbody>());
+        }
+    }
+
 }

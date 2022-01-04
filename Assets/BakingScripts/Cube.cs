@@ -14,6 +14,6 @@ public class Cube : Decoration
 
     override public void attachToPastry(GameObject pastry)
     {
-        this.transform.parent = pastry.transform;
+        transform.parent = pastry.transform;
     }
 }

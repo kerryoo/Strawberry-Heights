@@ -7,7 +7,9 @@ public class BakeryManager : GameManager
 {
     // Game management
     private List<string> targetPastry = new List<string>();
-    
+
+    // Player
+    [SerializeField] BakeryPlayer bp;
 
     // Scoring
     private int score = 0;
@@ -16,10 +18,16 @@ public class BakeryManager : GameManager
     // Customer
     [SerializeField] GameObject customerPreFab;
     [SerializeField] Vector3 customerSpawnPoint;
+    private CustomerControler customer;
 
     private void Start()
     {
         spawnCustomer();
+    }
+
+    public void setTargetPastry(List<string> target)
+    {
+        targetPastry = target;
     }
 
     /*
@@ -51,7 +59,7 @@ public class BakeryManager : GameManager
      */
     private void onPastryFailure()
     {
-
+        bp.setText("That is not what I wanted");
     }
 
     /*
@@ -60,6 +68,8 @@ public class BakeryManager : GameManager
     private void onPastrySuccess()
     {
         score += points;
+        customer.leaveStore();
+        
     }
 
     /*
@@ -67,6 +77,6 @@ public class BakeryManager : GameManager
      */
     public void spawnCustomer()
     {
-        Instantiate(customerPreFab, customerSpawnPoint, Quaternion.identity);
+        customer = Instantiate(customerPreFab, customerSpawnPoint, Quaternion.identity).GetComponent<CustomerControler>();
     }
 }
