@@ -5,6 +5,7 @@ using UnityEngine;
 public class Board
 {
     // TODO: start and end position vectors
+    PipeGraph graph;
     int level;
 
     //TODO: constructor
@@ -14,6 +15,7 @@ public class Board
 
     }
 
+    // randomly spawn obstacles on the board
     public void SpawnObstacles()
     {
 
@@ -27,7 +29,7 @@ public class Board
 
     // checks if there’s a valid path and if so, makes a water flow
     // animation and calls onComplete
-    public void Sumit()
+    public void Submit()
     {
 
     }
