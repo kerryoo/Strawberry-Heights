@@ -3,12 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - cube
+  - Pastry
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - customer
   - Water
   - UI
   - 
