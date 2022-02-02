@@ -3,53 +3,67 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // DRAFT
-public class Board
-{
-    // TODO: start and end position vectors
-    PipeGraph graph; // operate on graph
-    PipeGraph origGraph;
-    int level;
 
-    //TODO: constructor
-
-    public void ResetLevel()
+namespace Graphs {
+    public class Board
     {
-        graph = origGraph;
-    }
+        // TODO: start and end position vectors
+        PipeGraph graph; // operate on graph
+        PipeGraph origGraph;
+        int level;
 
-    // randomly spawn obstacles on the board
-    public void SpawnObstacles()
-    {
-        // put obstacles on origGraph
-        graph = origGraph;
-    }
+        //TODO: constructor
 
-    // a further abstraction that calls reset board and spawn obstacles
-    public void OnComplete()
-    {
-        level += 1;
-        origGraph = new PipeGraph;
-        SpawnObstacles();
-
-    }
-
-    // checks if there’s a valid path and if so, makes a water flow
-    // animation and calls onComplete
-    public void Submit()
-    {
-        if (graph.checkValid())
+        public void ResetLevel()
         {
-            OnComplete();
+            graph = origGraph;
         }
-        else
+
+        // randomly spawn obstacles on the board according to difficulty level
+        public void SpawnObstacles()
         {
-            OnFail();
+            // put obstacles on origGraph
+            graph = origGraph;
         }
-    }
 
-    // if submission fails, show the water flow fail
-    public void OnFail()
-    {
+        // a further abstraction that calls resetBoard and waterFlow
+        public void OnComplete()
+        {
+            waterFlow();
+            level += 1;
+            resetBoard();
+            origGraph = new PipeGraph();
+        }
 
+        // checks if there’s a valid path and if so, calls onComplete
+        public void Submit()
+        {
+            if (graph.checkValid())
+            {
+                OnComplete();
+            }
+            else
+            {
+                OnFail();
+            }
+        }
+
+        // if submission fails, show the water flow fail
+        public void OnFail()
+        {
+
+        }
+
+        //animation of water flowing onComplete
+        public void waterFlow()
+        {
+
+        }
+
+        //resetsBoard to a difficulty corresponding to level; called by onComplete
+        public void resetBoard()
+        {
+            SpawnObstacles();
+        }
     }
 }
