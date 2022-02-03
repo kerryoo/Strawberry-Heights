@@ -8,33 +8,18 @@ using UnityEngine;
 
 namespace Graphs
 {
-    public class Pair<T, U>
-    {
-        public Pair()
-        {
-        }
-
-        public Pair(T first, U second)
-        {
-            this.First = first;
-            this.Second = second;
-        }
-
-        public T First { get; set; }
-        public U Second { get; set; }
-    };
 
     public class PipeGraph
     {
         List<PipeNode> nodes = new List<PipeNode>();
         // how to note positions?
-        Pair<int, int> startPos;
-        Pair<int, int> endPos;
+        PipeNode startPos;
+        PipeNode endPos;
 
-        public PipeGraph(Pair<int, int> s, Pair<int, int> f)
+        public PipeGraph(PipeNode start, PipeNode end)
         {
-            this.startPos = s;
-            this.endPos = f;
+            this.startPos = start;
+            this.endPos = end;
         }
 
         public IList<PipeNode> Nodes
@@ -122,23 +107,48 @@ namespace Graphs
             }
         }
         public bool checkValid()
-        {
-            //if(connected to last node){
-            //TODO: How to know you've connected to the last node?
-            //
+        { 
             foreach (PipeNode node in nodes)
             {
-                //TODO: How to tell the difference between a cell in neighbors being null because 
-                //it hasn't been  connected to anything and is therefore a leak, and it being null
-                //because it's a shape with less than four openings. Create arrays of differing sizes based off shape?
-                foreach (PipeNode neighbor in node.Neighbors)
-                    if (neighbor == null)
+                int count = 0;
+                foreach (char c in node.Shape)
+                {
+                    if(c == '1')
                     {
-                        return false;
+                        ++count;
                     }
+                }
+                
+                if(count != node.Neighbors.Length)
+                {
+                    return false;
+                }
             }
-            return true;
-            //}
+
+            return dfs(startPos);
         }
+
+        HashSet<PipeNode> visited;
+        public bool dfs(PipeNode node)
+        {
+            if(node.Id == 1)
+            {
+                return true;
+            }
+
+            if(!visited.Contains(node))
+            {
+                visited.Add(node);
+                if(dfs(node.Neighbors[0]) || dfs(node.Neighbors[1]) || dfs(node.Neighbors[2]) || dfs(node.Neighbors[3]))
+                {
+                    return true;
+                }
+
+                visited.Remove(node);
+            }
+
+            return false;
+        }
+
     }
 }

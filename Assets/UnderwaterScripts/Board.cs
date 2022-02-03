@@ -32,7 +32,10 @@ namespace Graphs {
             waterFlow();
             level += 1;
             resetBoard();
-            origGraph = new PipeGraph();
+            //TODO: make random start and end
+            PipeNode start = new PipeNode(0, "1010");
+            PipeNode finish = new PipeNode(1, "1010");
+            origGraph = new PipeGraph(start, finish);
         }
 
         // checks if there’s a valid path and if so, calls onComplete
