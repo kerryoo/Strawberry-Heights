@@ -18,7 +18,7 @@ public class CustomerControler : MonoBehaviour
         //(TODO) Generate random pastry
         pastry.Add("cube");
 
-        bm.setTargetPastry(pastry);
+        bm.setTargetCake(pastry);
     }
 
     public void leaveStore()

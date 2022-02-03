@@ -15,8 +15,8 @@ public class SubmissionPad : MonoBehaviour
     {
         if (collision.gameObject.tag == "Pastry")
         {
-            Pastry pastry = collision.gameObject.GetComponent<Pastry>();
-            bm.onPastrySubmit(pastry.getDecorations());
+            Cake cake = collision.gameObject.GetComponent<Cake>();
+            bm.onCakeSubmit(cake.getToppings());
             Destroy(collision.gameObject.GetComponent<Rigidbody>());
         }
     }

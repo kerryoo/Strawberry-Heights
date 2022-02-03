@@ -7,7 +7,17 @@ using UnityEngine;
  * be that every decoration will have a unique way to attach to a pastry and
  * will have a unique tag used for testing a submission.
  */
-abstract public class Decoration : MonoBehaviour
+public class Topping : MonoBehaviour
 {
-    abstract public void attachToPastry(GameObject pastry);
+    [SerializeField] private new string name;
+
+    public string getName()
+    {
+        return name;
+    }
+
+    public void attachToPastry(GameObject pastry)
+    {
+        transform.parent = pastry.transform;
+    }
 }

@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class BakeryManager : GameManager
 {
     // Game management
-    private List<string> targetPastry = new List<string>();
+    private List<string> targetCake = new List<string>();
 
     // Player
     [SerializeField] BakeryPlayer bp;
@@ -25,39 +25,39 @@ public class BakeryManager : GameManager
         spawnCustomer();
     }
 
-    public void setTargetPastry(List<string> target)
+    public void setTargetCake(List<string> target)
     {
-        targetPastry = target;
+        targetCake = target;
     }
 
     /*
-     * Check if the targetPastry is the same as the textures. If it is, call
-     * onPastrySuccess. If not, call onPastryFailure.
+     * Check if the targetCake is the same as the textures. If it is, call
+     * onCakeSuccess. If not, call onCakeFailure.
      */
-    public void onPastrySubmit(List<string> decorations)
+    public void onCakeSubmit(List<string> toppings)
     {
-        if (targetPastry.Count != decorations.Count)
+        if (targetCake.Count != toppings.Count)
         {
-            onPastryFailure();
+            onCakeFailure();
             return;
         }
 
-        for (int i = 0; i < decorations.Count; ++i) 
+        for (int i = 0; i < toppings.Count; ++i) 
         {
-            if (targetPastry[i] != decorations[i])
+            if (targetCake[i] != toppings[i])
             {
-                onPastryFailure();
+                onCakeFailure();
                 return;
             }
         }
 
-        onPastrySuccess();
+        onCakeSuccess();
     }
 
     /*
      * Do something when the player loses.
      */
-    private void onPastryFailure()
+    private void onCakeFailure()
     {
         bp.setText("That is not what I wanted");
     }
@@ -65,7 +65,7 @@ public class BakeryManager : GameManager
     /*
      * Incremement the level and add to the score.
      */
-    private void onPastrySuccess()
+    private void onCakeSuccess()
     {
         score += points;
         customer.leaveStore();
