@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pastry : MonoBehaviour
+public class Cake : MonoBehaviour
 {
-    private List<string> decorations = new List<string>();
+    private List<string> toppings = new List<string>();
 
     private void Start()
     {
         gameObject.tag = "Pastry";
     }
 
+    // Used for testing
     private void Update()
     {
         if (Input.GetKey(KeyCode.E))
@@ -19,28 +20,28 @@ public class Pastry : MonoBehaviour
         }
     }
 
-    public List<string> getDecorations()
+    public List<string> getToppings()
     {
-        return decorations;
+        return toppings;
     }
 
     /*
      * Attaches decoration to the pastry, and appends the name of the
      * decoration to the list of decorations on the pastry.
      */
-    public void addDecoration(Decoration decor)
+    public void addTopping(Topping topping)
     {
-        decor.attachToPastry(gameObject);
-        decorations.Add(decor.tag);
+        topping.attachToPastry(gameObject);
+        toppings.Add(topping.getName());
     }
 
     public void OnCollisionEnter(Collision collision)
     {
-        Decoration decor = collision.gameObject.GetComponent<Decoration>();
-        if (decor)
+        Topping topping = collision.gameObject.GetComponent<Topping>();
+        if (topping)
         {
-            addDecoration(decor);
-            Destroy(decor.GetComponent<Rigidbody>());
+            addTopping(topping);
+            Destroy(topping.GetComponent<Rigidbody>());
         }
     }
 
