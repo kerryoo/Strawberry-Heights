@@ -47,14 +47,14 @@ public class Draggable : MonoBehaviour
             rayPoint.y = transform.position.y;
             transform.position = rayPoint;
 
-            if (Input.GetKey(KeyCode.Q))
-            {
-                Vector3 rotation = new Vector3(0, 60f, 0) * Time.deltaTime;
-                transform.Rotate(rotation, Space.Self);
-            }
             if (Input.GetKey(KeyCode.E))
             {
-                Vector3 rotation = new Vector3(0, -60f, 0) * Time.deltaTime;
+                Vector3 rotation = new Vector3(0, 90f, 0) * Time.deltaTime;
+                transform.Rotate(rotation, Space.Self);
+            }
+            if (Input.GetKey(KeyCode.Q))
+            {
+                Vector3 rotation = new Vector3(0, -90f, 0) * Time.deltaTime;
                 transform.Rotate(rotation, Space.Self);
             }
         }
