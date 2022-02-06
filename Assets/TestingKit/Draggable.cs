@@ -4,22 +4,8 @@ using UnityEngine;
 
 public class Draggable : MonoBehaviour
 {
-    private Color mouseOverColor = Color.blue;
-    private Color originalColor = Color.yellow;
     private bool dragging = false;
     private float distance;
-    private Renderer render;
-
-   
-    void OnMouseEnter()
-    {
-        render.material.color = mouseOverColor;
-    }
-
-    void OnMouseExit()
-    {
-        render.material.color = originalColor;
-    }
 
     void OnMouseDown()
     {
@@ -30,11 +16,6 @@ public class Draggable : MonoBehaviour
     void OnMouseUp()
     {
         dragging = false;
-    }
-
-    private void Start()
-    {
-        render = GetComponent<Renderer>();
     }
 
     void Update()

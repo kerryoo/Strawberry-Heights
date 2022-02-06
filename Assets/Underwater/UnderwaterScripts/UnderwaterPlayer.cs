@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class UnderwaterPlayer : MonoBehaviour
 {
-    [SerializeField] InputController inputController;
     [SerializeField] float interactDistance = 5f;
     
 
@@ -12,10 +11,6 @@ public class UnderwaterPlayer : MonoBehaviour
     void Update()
     {
         Move();
-        if (inputController.Interact)
-        {
-            Interact();
-        }
     }
 
     private void Move()
