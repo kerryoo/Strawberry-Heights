@@ -55,27 +55,15 @@ namespace Graphs
         // remove a node
         public bool RemoveNeighbor(PipeNode neighbor)
         {
-            return neighbors.Remove(neighbor);
-            /*
-            // check valid here
-            if (neighbors[direction] != null)
+            for(int i =0; i<neighbors.Length; ++i)
             {
-                neighbors[direction] = null;
-                for (int i = 0; i < neighbors.Length; i++)
+                if(neighbors[i] == neighbor)
                 {
-                    if (neighbor.neighbors[i] != null)
-                    {
-                        neighbor.neighbors[i].neighbors[(i + 2) % 4] = null;
-                    }
-
-                    neighbor.neighbors[i] = null;
+                    neighbors[i] = null;
+                    return true;
                 }
-
-                return true;
             }
-
             return false;
-            */
         }
 
         // remove all neighbours
