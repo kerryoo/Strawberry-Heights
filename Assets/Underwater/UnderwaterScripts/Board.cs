@@ -4,69 +4,69 @@ using UnityEngine;
 
 // DRAFT
 
-namespace Graphs {
-    public class Board
+public class Board : MonoBehaviour
+{
+    // TODO: start and end position vectors
+    PipeGraph graph; // operate on graph
+    PipeGraph origGraph;
+    public GameObject obstacle;
+    int level;
+
+    //TODO: constructor
+
+    public void ResetLevel()
     {
-        // TODO: start and end position vectors
-        PipeGraph graph; // operate on graph
-        PipeGraph origGraph;
-        int level;
+        graph = origGraph;
+    }
 
-        //TODO: constructor
+    // randomly spawn obstacles on the board according to difficulty level
+    public void SpawnObstacles()
+    {
+        // put obstacles on origGraph
+        graph = origGraph;
+        Instantiate(obstacle);
+    }
 
-        public void ResetLevel()
+    // a further abstraction that calls resetBoard and waterFlow
+    public void OnComplete()
+    {
+        waterFlow();
+        level += 1;
+        resetBoard();
+        //TODO: make random start and end
+        PipeNode start = new PipeNode(0, "1010");
+        PipeNode finish = new PipeNode(1, "1010");
+        origGraph = new PipeGraph(start, finish);
+    }
+
+    // checks if there’s a valid path and if so, calls onComplete
+    public void Submit()
+    {
+        if (graph.checkValid())
         {
-            graph = origGraph;
+            OnComplete();
         }
-
-        // randomly spawn obstacles on the board according to difficulty level
-        public void SpawnObstacles()
+        else
         {
-            // put obstacles on origGraph
-            graph = origGraph;
+            OnFail();
         }
+    }
 
-        // a further abstraction that calls resetBoard and waterFlow
-        public void OnComplete()
-        {
-            waterFlow();
-            level += 1;
-            resetBoard();
-            //TODO: make random start and end
-            PipeNode start = new PipeNode(0, "1010");
-            PipeNode finish = new PipeNode(1, "1010");
-            origGraph = new PipeGraph(start, finish);
-        }
+    // if submission fails, show the water flow fail
+    public void OnFail()
+    {
 
-        // checks if there’s a valid path and if so, calls onComplete
-        public void Submit()
-        {
-            if (graph.checkValid())
-            {
-                OnComplete();
-            }
-            else
-            {
-                OnFail();
-            }
-        }
+    }
 
-        // if submission fails, show the water flow fail
-        public void OnFail()
-        {
+    //animation of water flowing onComplete
+    public void waterFlow()
+    {
 
-        }
+    }
 
-        //animation of water flowing onComplete
-        public void waterFlow()
-        {
-
-        }
-
-        //resetsBoard to a difficulty corresponding to level; called by onComplete
-        public void resetBoard()
-        {
-            SpawnObstacles();
-        }
+    //resetsBoard to a difficulty corresponding to level; called by onComplete
+    public void resetBoard()
+    {
+        SpawnObstacles();
     }
 }

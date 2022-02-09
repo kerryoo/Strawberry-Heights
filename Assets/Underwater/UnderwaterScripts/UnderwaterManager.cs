@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UnderwaterManager : GameManager
 {
-    public GameObject pipe;
+    public GameObject Pipe1;
     int s;
     
     //sets the rate at which pipes spawn
@@ -17,7 +17,7 @@ public class UnderwaterManager : GameManager
     void update()
     {
         if (Time.time % s == 0) {
-            Instantiate(pipe); //TODO:Add random position parameter
+            Instantiate(Pipe1); //TODO:Add random position parameter
         }
     }
 }
