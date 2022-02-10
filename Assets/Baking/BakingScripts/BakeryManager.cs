@@ -79,4 +79,10 @@ public class BakeryManager : GameManager
     {
         customer = Instantiate(customerPreFab, customerSpawnPoint, Quaternion.identity).GetComponent<CustomerControler>();
     }
+
+    private void setTargetCake()
+    {
+
+    }
+
 }

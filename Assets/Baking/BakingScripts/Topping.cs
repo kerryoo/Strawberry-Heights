@@ -9,15 +9,10 @@ using UnityEngine;
  */
 public class Topping : MonoBehaviour
 {
-    [SerializeField] private new string name;
+    [SerializeField] private string toppingName;
 
     public string getName()
     {
-        return name;
-    }
-
-    public void attachToPastry(GameObject pastry)
-    {
-        transform.parent = pastry.transform;
+        return toppingName;
     }
 }
