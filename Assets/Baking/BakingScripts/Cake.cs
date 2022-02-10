@@ -4,23 +4,10 @@ using UnityEngine;
 
 public class Cake : MonoBehaviour
 {
-    private List<string> toppings = new List<string>();
+    [SerializeField] string cakeType;
+    private List<Topping> toppings = new List<Topping>();
 
-    private void Start()
-    {
-        gameObject.tag = "Pastry";
-    }
-
-    // Used for testing
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.E))
-        {
-            gameObject.AddComponent<Rigidbody>();
-        }
-    }
-
-    public List<string> getToppings()
+    public List<Topping> getToppings()
     {
         return toppings;
     }
@@ -31,17 +18,18 @@ public class Cake : MonoBehaviour
      */
     public void addTopping(Topping topping)
     {
-        topping.attachToPastry(gameObject);
-        toppings.Add(topping.getName());
+        toppings.Add(topping);
     }
 
     public void OnCollisionEnter(Collision collision)
     {
         Topping topping = collision.gameObject.GetComponent<Topping>();
+
         if (topping)
         {
             addTopping(topping);
-            Destroy(topping.GetComponent<Rigidbody>());
+            topping.GetComponent<Rigidbody>().isKinematic = true;
+            collision.transform.parent = transform;
         }
     }
 
