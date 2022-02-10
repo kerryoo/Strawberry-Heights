@@ -6,4 +6,5 @@ public class Ticket : MonoBehaviour
 {
     public string cakeType;
     public Dictionary<Topping, int> toppingsToCount = new Dictionary<Topping, int>();
+    public float age;
 }
