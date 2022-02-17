@@ -15,4 +15,8 @@ public class Topping : MonoBehaviour
     {
         return toppingName;
     }
+    public Topping(string toppingName)
+    {
+        this.toppingName = toppingName;
+    }
 }
