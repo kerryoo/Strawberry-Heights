@@ -24,11 +24,12 @@ public class BakeryManager : GameManager
     private CustomerControler customer;
     public int day {get; private set; }
     private bool dayInAction = false;
-    
+
+    float time_interval = 5.0f;
+    float next_customer = 0.0f;
 
     private void Start()
     {
-        //spawnCustomer();
         day = 1;
         
     }
@@ -122,6 +123,13 @@ public class BakeryManager : GameManager
 
     private void dailyActivitiesUpdate()
     {
+        if (Time.time > next_customer)
+        {
+            time_interval = Random.Range(5, (float)(21.0-0.5*day)); //may need to adjust this equation
+            next_customer = Time.time + time_interval;
+
+            ticketManager.createCustomer();
+        }
         if (Input.GetKeyDown(KeyCode.Y))
         {
             ticketManager.createCustomer();
