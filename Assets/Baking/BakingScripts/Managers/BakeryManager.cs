@@ -126,12 +126,9 @@ public class BakeryManager : GameManager
 
     private void dailyActivitiesUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.Y))
         {
-            Topping strawberry = new Topping(ToppingType.Strawberry);
-            Dictionary<Topping, int> justOneStrawberry = new Dictionary<Topping, int>();
-            justOneStrawberry[strawberry] = 1;
-            ticketManager.createTicket(CakeType.Lemon, justOneStrawberry, BalanceSheet.timePerTicket);
+            ticketManager.createCustomer();
         }
     }
 

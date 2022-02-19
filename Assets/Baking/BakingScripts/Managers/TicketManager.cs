@@ -4,26 +4,42 @@ using UnityEngine;
 
 public class TicketManager : MonoBehaviour
 {
-    [SerializeField] GameObject ticketGameObject;
+    [SerializeField] GameObject ticketPrefab;
+    [SerializeField] GameObject customerPrefab;
+    [SerializeField] Vector3 registerLocation;
+
     private Dictionary<int, Ticket> idToTicket;
+    private Dictionary<int, Customer> idToCustomer;
+    
     private int ticketNumber = 0;
 
     private void Start()
     {
         idToTicket = new Dictionary<int, Ticket>();
+        idToCustomer = new Dictionary<int, Customer>();
     }
 
-    public void createTicket(string cakeType, Dictionary<Topping, int> toppingsToCount, float time)
+    public void createCustomer()
     {
-        GameObject ticketObj = Instantiate(ticketGameObject);
-
-        Ticket ticket = ticketObj.GetComponent<Ticket>();
-        ticket.setTicket(ticketNumber, cakeType, toppingsToCount, time);
-
-        idToTicket[ticketNumber] = ticket;
-
-        ticket.ticketDestroyedEvent.AddListener(onTicketDestroyed);
         ticketNumber++;
+
+        GameObject customerObj = Instantiate(customerPrefab);
+        Customer customer = customerObj.GetComponent<Customer>();
+        idToCustomer[ticketNumber] = customer;
+        customer.initializeCustomer(ticketNumber, registerLocation);
+        customer.orderPlacedEvent.AddListener(onOrderPlaced);
+
+        customer.startOrder();
+    }
+
+    private void writeTicket(int id, Ticket ticket)
+    {
+        Topping strawberry = new Topping(ToppingType.Strawberry);
+        Dictionary<Topping, int> justOneStrawberry = new Dictionary<Topping, int>();
+        justOneStrawberry[strawberry] = 1;
+
+        ticket.setTicket(id, CakeType.Lemon, justOneStrawberry, BalanceSheet.timePerTicket);
+        ticket.ticketDestroyedEvent.AddListener(onTicketDestroyed);
     }
 
     private void onTicketDestroyed(int id)
@@ -32,6 +48,26 @@ public class TicketManager : MonoBehaviour
         destroyedTicket.ticketDestroyedEvent.RemoveAllListeners();
         idToTicket.Remove(id);
         Debug.Log("Ticket " + id + " Timed out!");
+    }
+
+    private void createTicket(int id)
+    {
+        GameObject ticketObj = Instantiate(ticketPrefab);
+
+        Ticket ticket = ticketObj.GetComponent<Ticket>();
+        writeTicket(id, ticket);
+        idToTicket[id] = ticket;
+
+        ticket.startTimer();
+    }
+
+    private void onOrderPlaced(int id)
+    {
+        Customer orderingCustomer = idToCustomer[id];
+        orderingCustomer.orderPlacedEvent.RemoveAllListeners();
+        createTicket(id);
+        //Start waiting
+
     }
 
     public void dayReset()

@@ -8,6 +8,7 @@ public class Ticket : MonoBehaviour
     private int id;
     public string cakeType;
     public Dictionary<Topping, int> toppingsToCount = new Dictionary<Topping, int>();
+    private float time;
 
     [SerializeField] Timer timer;
     [SerializeField] TextMeshProUGUI timeLeftText;
@@ -24,10 +25,15 @@ public class Ticket : MonoBehaviour
         this.id = id;
         this.cakeType = cakeType;
         this.toppingsToCount = toppingsToCount;
+        this.time = time;
 
         ticketNumberText.SetText("Ticket #" + id);
-        timer.setTimer(time);
         timer.timeUpEvent.AddListener(onTimeUp);
+    }
+
+    public void startTimer()
+    {
+        timer.setTimer(time);
     }
 
     private void onTimeUp()
