@@ -30,7 +30,6 @@ public class BakeryManager : GameManager
     {
         //spawnCustomer();
         day = 1;
-        
     }
 
     private void Update()
@@ -63,8 +62,8 @@ public class BakeryManager : GameManager
      */
     public void onCakeSubmit(List<string> toppings)
     {
-        if (targetCake.Count != toppings.Count)
-        {
+        addCash(toppings);
+        if (targetCake.Count != toppings.Count) { 
             onCakeFailure();
             return;
         }
@@ -79,6 +78,28 @@ public class BakeryManager : GameManager
         }
 
         onCakeSuccess();
+    }
+
+    public void addCash(List<string> toppings)
+    {
+        int tempCash = 0;
+        foreach(string topping in toppings)
+        {
+            if (targetCake.Contains(topping))
+            {
+                tempCash++;
+                targetCake.Remove(topping);
+            }
+            else
+            {
+                tempCash--;
+            }
+        }
+        if(tempCash < 0)
+        {
+            tempCash = 0;
+        }
+        cash += tempCash;
     }
 
     /*
