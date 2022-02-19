@@ -111,6 +111,7 @@ public class BakeryManager : GameManager
         dayTimer.timeUpEvent.AddListener(onDayEnd);
         dayTimer.setTimer(BalanceSheet.timePerLevel);
         dayInAction = true;
+        ticketManager.newDay(day);
     }
 
     private void onDayEnd()

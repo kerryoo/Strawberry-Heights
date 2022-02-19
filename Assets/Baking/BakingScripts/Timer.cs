@@ -11,7 +11,7 @@ public class Timer : MonoBehaviour
     {
         timeLeft = time;
         StartCoroutine(TimerRoutine());
-        Debug.Log("Timer started");
+        //Debug.Log("Timer started");
     }
 
     public string getTimeLeftString()
