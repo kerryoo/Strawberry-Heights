@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] ProgressBar progressBar;
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] TextMeshProUGUI tipsEarnedText;
+    [SerializeField] TextMeshProUGUI dayText;
     [SerializeField] BakeryManager gameManager;
     [SerializeField] Timer DayTimer;
 
@@ -37,6 +38,11 @@ public class UIManager : MonoBehaviour
         timerText.SetText(DayTimer.getTimeLeftString());
         progressBar.currentPercent = 100 * DayTimer.timeLeft / BalanceSheet.timePerLevel;
         progressBar.UpdateUI();
+    }
+
+    public void updateDayUI(int dayNumber)
+    {
+        dayText.SetText("Day " + dayNumber.ToString());
     }
 
     private void updateTipsEarnedUI()

@@ -30,8 +30,7 @@ public class BakeryManager : GameManager
 
     private void Start()
     {
-        day = 1;
-        
+        day = 1; 
     }
 
     private void Update()
@@ -109,6 +108,7 @@ public class BakeryManager : GameManager
 
     private void startDay()
     {
+        uiManager.updateDayUI(day);
         dayTimer.timeUpEvent.AddListener(onDayEnd);
         dayTimer.setTimer(BalanceSheet.timePerLevel);
         dayInAction = true;
@@ -118,6 +118,7 @@ public class BakeryManager : GameManager
     {
         dayTimer.timeUpEvent.RemoveAllListeners();
         uiManager.openDayEndModal(day);
+        day = day + 1;
         dayInAction = false;
     }
 
@@ -125,13 +126,10 @@ public class BakeryManager : GameManager
     {
         if (Time.time > next_customer)
         {
-            time_interval = Random.Range(5, (float)(21.0-0.5*day)); //may need to adjust this equation
+            float max = (float)(21.0 - 0.5 * day);
+            time_interval = Random.Range(5, max); //may need to adjust this equation
             next_customer = Time.time + time_interval;
 
-            ticketManager.createCustomer();
-        }
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
             ticketManager.createCustomer();
         }
     }
