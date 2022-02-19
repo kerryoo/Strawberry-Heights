@@ -79,4 +79,14 @@ public class Customer : MonoBehaviour
             Debug.Log("No order event!");
         }
     }
+
+    public void onOrderCompleted()
+    {
+
+    }
+
+    public void onTicketTimeOut()
+    {
+
+    }
 }

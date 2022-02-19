@@ -7,6 +7,7 @@ public class TicketManager : MonoBehaviour
     [SerializeField] GameObject ticketPrefab;
     [SerializeField] GameObject customerPrefab;
     [SerializeField] Vector3 registerLocation;
+    [SerializeField] BakeryManager bakeryManager;
 
     private Dictionary<int, Ticket> idToTicket;
     private Dictionary<int, Customer> idToCustomer;

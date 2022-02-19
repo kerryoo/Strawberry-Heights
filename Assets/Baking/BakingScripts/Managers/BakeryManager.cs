@@ -19,16 +19,17 @@ public class BakeryManager : GameManager
     [SerializeField] TicketManager ticketManager;
 
     [SerializeField] Timer dayTimer;
-    public float cash {get; private set; }
+    public float cash { get; private set; }
 
     private CustomerControler customer;
-    private int day = 1;
+    public int day {get; private set; }
     private bool dayInAction = false;
     
 
     private void Start()
     {
         //spawnCustomer();
+        day = 1;
         
     }
 
@@ -103,11 +104,6 @@ public class BakeryManager : GameManager
     public void spawnCustomer()
     {
         customer = Instantiate(customerPreFab, customerSpawnPoint, Quaternion.identity).GetComponent<CustomerControler>();
-    }
-
-    private void setTargetCake()
-    {
-
     }
 
     private void startDay()
