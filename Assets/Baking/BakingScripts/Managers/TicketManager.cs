@@ -7,6 +7,7 @@ public class TicketManager : MonoBehaviour
     [SerializeField] GameObject ticketPrefab;
     [SerializeField] GameObject customerPrefab;
     [SerializeField] Vector3 registerLocation;
+    [SerializeField] Vector3 customerSpawnLocation;
     [SerializeField] BakeryManager bakeryManager;
 
     private Dictionary<int, Ticket> idToTicket;
@@ -24,7 +25,7 @@ public class TicketManager : MonoBehaviour
     {
         ticketNumber++;
 
-        GameObject customerObj = Instantiate(customerPrefab);
+        GameObject customerObj = Instantiate(customerPrefab, customerSpawnLocation, Quaternion.identity);
         Customer customer = customerObj.GetComponent<Customer>();
         idToCustomer[ticketNumber] = customer;
         customer.initializeCustomer(ticketNumber, registerLocation);
@@ -53,7 +54,7 @@ public class TicketManager : MonoBehaviour
 
     private void createTicket(int id)
     {
-        GameObject ticketObj = Instantiate(ticketPrefab);
+        GameObject ticketObj = Instantiate(ticketPrefab, idToCustomer[id].transform.position, Quaternion.identity);
 
         Ticket ticket = ticketObj.GetComponent<Ticket>();
         writeTicket(id, ticket);

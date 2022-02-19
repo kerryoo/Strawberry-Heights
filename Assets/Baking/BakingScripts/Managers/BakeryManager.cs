@@ -25,7 +25,7 @@ public class BakeryManager : GameManager
     public int day {get; private set; }
     private bool dayInAction = false;
     
-
+    
     private void Start()
     {
         //spawnCustomer();
@@ -96,14 +96,6 @@ public class BakeryManager : GameManager
     {
         customer.leaveStore();
         
-    }
-
-    /*
-     * Creates a new customer
-     */
-    public void spawnCustomer()
-    {
-        customer = Instantiate(customerPreFab, customerSpawnPoint, Quaternion.identity).GetComponent<CustomerControler>();
     }
 
     private void startDay()
