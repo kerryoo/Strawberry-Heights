@@ -30,9 +30,6 @@ public class BakeryManager : GameManager
     {
         //spawnCustomer();
         day = 1;
-        setTargetCake(new List<string> { "a", "bat", "cat"});
-        addCash(new List<string> { "a", "bat", "bat", "bat", "bat", "bat", "sfssf", "cat" });
-        Debug.Log(cash);
     }
 
     private void Update()
