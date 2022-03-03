@@ -6,6 +6,7 @@ TagManager:
   tags:
   - cube
   - Pastry
+  - LeverHandle
   layers:
   - Default
   - TransparentFX

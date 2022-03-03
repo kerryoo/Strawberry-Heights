@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Cake : MonoBehaviour
 {
-    [SerializeField] string cakeType;
+    [SerializeField] int cakeType;
+    [SerializeField] GameObject pullApartResult;
     private List<Topping> toppings = new List<Topping>();
 
     public List<Topping> getToppings()
@@ -21,16 +22,14 @@ public class Cake : MonoBehaviour
         toppings.Add(topping);
     }
 
-    public void OnCollisionEnter(Collision collision)
+    public void onPullApart()
     {
-        Topping topping = collision.gameObject.GetComponent<Topping>();
-
-        if (topping)
-        {
-            addTopping(topping);
-            topping.GetComponent<Rigidbody>().isKinematic = true;
-            collision.transform.parent = transform;
-        }
+        Instantiate(pullApartResult, transform.position + new Vector3(0, 0.1f, 0), Quaternion.identity);
+        Instantiate(pullApartResult, transform.position + new Vector3(0.1f, 0, 0), Quaternion.identity);
+        Instantiate(pullApartResult, transform.position + new Vector3(0, 0, 0.1f), Quaternion.identity);
+        Destroy(gameObject);
     }
+
+
 
 }

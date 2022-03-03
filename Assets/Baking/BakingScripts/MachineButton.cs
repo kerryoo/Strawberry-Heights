@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class MachineButton : MonoBehaviour
 {
-    [SerializeField] GameObject prefab;
-    [SerializeField] Vector3 spawnPoint;
+    [SerializeField] GameObject cakePrefab;
+    [SerializeField] Transform spawnPoint;
 
-    private void OnMouseDown()
+    private void OnCollisionEnter(Collision collision)
     {
-        Instantiate(prefab, spawnPoint, Quaternion.identity);
+        GameObject newCake = Instantiate(cakePrefab, spawnPoint);
+        newCake.transform.localPosition = new Vector3(0, -0.2f, 0);
     }
 }

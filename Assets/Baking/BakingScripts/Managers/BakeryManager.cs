@@ -5,12 +5,6 @@ using UnityEngine.AI;
 
 public class BakeryManager : GameManager
 {
-    // Game management
-    private List<string> targetCake = new List<string>();
-
-    // Player
-    [SerializeField] BakeryPlayer bp;
-
     // Customer
     [SerializeField] GameObject customerPreFab;
     [SerializeField] Vector3 customerSpawnPoint;
@@ -21,7 +15,6 @@ public class BakeryManager : GameManager
     [SerializeField] Timer dayTimer;
     public float cash { get; private set; }
 
-    private CustomerControler customer;
     public int day {get; private set; }
     private bool dayInAction = false;
     
@@ -30,72 +23,40 @@ public class BakeryManager : GameManager
     {
         //spawnCustomer();
         day = 1;
-        
+        Cursor.lockState = CursorLockMode.Locked;
+        startDay();
+
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            if (uiManager.isModalOn())
-            {
-                uiManager.closeModal();
-                startDay();
-            } else
-            {
-                uiManager.openDayStartModal(day);
-            }
-        }
+        //if (Input.GetKeyDown(KeyCode.P) || OVRInput.GetDown(OVRInput.Button.Two))
+        //{
+        //    if (uiManager.isModalOn())
+        //    {
+        //        uiManager.closeModal();
+        //        startDay();
+        //    } else
+        //    {
+        //        uiManager.openDayStartModal(day);
+        //    }
+        //}
+
         if (dayInAction)
         {
             dailyActivitiesUpdate();
         }
-    }
 
-    public void setTargetCake(List<string> target)
-    {
-        targetCake = target;
-    }
-
-    /*
-     * Check if the targetCake is the same as the textures. If it is, call
-     * onCakeSuccess. If not, call onCakeFailure.
-     */
-    public void onCakeSubmit(List<string> toppings)
-    {
-        if (targetCake.Count != toppings.Count)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            onCakeFailure();
-            return;
-        }
-
-        for (int i = 0; i < toppings.Count; ++i) 
-        {
-            if (targetCake[i] != toppings[i])
+            if (Cursor.lockState == CursorLockMode.Locked)
             {
-                onCakeFailure();
-                return;
+                Cursor.lockState = CursorLockMode.None;
+            } else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
             }
         }
-
-        onCakeSuccess();
-    }
-
-    /*
-     * Do something when the player loses.
-     */
-    private void onCakeFailure()
-    {
-        bp.setText("That is not what I wanted");
-    }
-
-    /*
-     * Incremement the level and add to the score.
-     */
-    private void onCakeSuccess()
-    {
-        customer.leaveStore();
-        
     }
 
     private void startDay()
@@ -114,10 +75,11 @@ public class BakeryManager : GameManager
 
     private void dailyActivitiesUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Y))
+        if (Input.GetKeyDown(KeyCode.Y) || OVRInput.GetDown(OVRInput.Button.One))
         {
             ticketManager.createCustomer();
         }
+
     }
 
 }

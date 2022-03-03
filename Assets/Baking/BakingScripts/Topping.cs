@@ -2,21 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*
- * Base class for all decorations that can be added to a pastry. The idea will
- * be that every decoration will have a unique way to attach to a pastry and
- * will have a unique tag used for testing a submission.
- */
 public class Topping : MonoBehaviour
 {
-    [SerializeField] private string toppingName;
+    [SerializeField] private int toppingName;
 
-    public string getName()
+    private bool beingHeld = false;
+
+    public int getName()
     {
         return toppingName;
     }
-    public Topping(string toppingName)
+
+    public Topping(int name)
     {
-        this.toppingName = toppingName;
+        toppingName = name;
     }
+
+//    private void OnCollisionEnter(Collision collision)
+//    {
+//        Cake cake = collision.transform.GetComponent<Cake>();
+
+//        if (!beingHeld && cake)
+//        {
+//            cake.addTopping(this);
+//            FixedJoint joint = gameObject.AddComponent<FixedJoint>();
+//            joint.connectedBody = collision.rigidbody;
+//        }
+//    }
+
+//    public void OnGrab()
+//    {
+//        beingHeld = true;
+//    }
+
+//    public void OnRelease()
+//    {
+//        beingHeld = false;
+//    }
 }
