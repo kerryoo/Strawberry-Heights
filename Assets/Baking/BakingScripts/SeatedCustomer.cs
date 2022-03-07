@@ -5,6 +5,7 @@ using UnityEngine;
 public class SeatedCustomer : MonoBehaviour
 {
     private Animator animator;
+    public bool hasTablePartner;
     void Start()
     {
         animator = GetComponent<Animator>();

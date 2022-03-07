@@ -202,14 +202,36 @@ public class TicketManager : MonoBehaviour
     private void setSeatedCustomers()
     {
         int numberOfCustomersToSeat= Random.Range(2, 8);
+        List<string> tableNames = new List<string>();
+        List<SeatedCustomer> seatedCustomers = new List<SeatedCustomer>();
+
         for (int i = 0; i < numberOfCustomersToSeat; i++)
         {
+            string currTableName = seats[i].name.Remove(seats[i].name.Length-1, 1);
+            tableNames.Add(currTableName);
+
             GameObject customerToSeat = Instantiate(customerList[i], seats[i]);
             Destroy(customerToSeat.GetComponent<NavMeshAgent>());
             Destroy(customerToSeat.GetComponent<Customer>());
-            customerToSeat.AddComponent<SeatedCustomer>();
+            SeatedCustomer seatedCustomer = customerToSeat.AddComponent<SeatedCustomer>();
+
+            seatedCustomers.Add(seatedCustomer);
         }
 
+
+        for (int i = 0; i < tableNames.Count - 1; i++)
+        {
+            for (int j = i + 1; j < tableNames.Count; j++)
+            {
+                if (tableNames[i] == tableNames[j])
+                {
+                    seatedCustomers[i].hasTablePartner = true;
+                    seatedCustomers[j].hasTablePartner = true;
+                }
+            }
+        }
+
+        
         customerList.RemoveRange(0, numberOfCustomersToSeat);
 
     }
