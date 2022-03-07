@@ -19,6 +19,16 @@ public class Customer : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            Debug.Log("pick up already");
+            customerAnimator.SetBool("Pickup", true);
+            customerAnimator.SetFloat("MoveSpeed", 1);
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            customerAnimator.SetBool("SitDown", true);
+        }
     }
 
     public void initializeCustomer(int ticketID)
@@ -26,9 +36,9 @@ public class Customer : MonoBehaviour
         this.ticketID = ticketID;
     }
 
-    public void moveInLine(Vector3 lineLocation, Vector3 lineLookLocation)
+    public void moveInLine(Vector3 lineLocation)
     {
-        StartCoroutine(goToLinePositionRoutine(lineLocation, lineLookLocation));
+        StartCoroutine(goToLinePositionRoutine(lineLocation));
     }
 
     public void startOrder(Vector3 registerLocation, Vector3 registerLookLocation)
@@ -47,10 +57,9 @@ public class Customer : MonoBehaviour
         StartCoroutine(pickUpRoutine(pickUpLocation));
     }
 
-    IEnumerator goToLinePositionRoutine(Vector3 lineLocation, Vector3 lookLocation)
+    IEnumerator goToLinePositionRoutine(Vector3 lineLocation)
     {
         yield return StartCoroutine(goToLocation(lineLocation));
-        yield return StartCoroutine(goToRotation(lookLocation));
     }
 
     IEnumerator goToRegisterRoutine(Vector3 registerLocation, Vector3 registerLookLocation)
@@ -108,7 +117,7 @@ public class Customer : MonoBehaviour
     {
         bool inRotation = false;
         Vector3 relativePos = lookLocation - transform.position;
-        Quaternion targetRot = Quaternion.LookRotation(relativePos);
+        Quaternion targetRot = Quaternion.LookRotation(relativePos, Vector3.up);
         float timeCount = 0;
 
         while (!inRotation)

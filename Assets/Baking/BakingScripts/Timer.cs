@@ -11,7 +11,6 @@ public class Timer : MonoBehaviour
     {
         timeLeft = time;
         StartCoroutine(TimerRoutine());
-        Debug.Log("Timer started");
     }
 
     public string getTimeLeftString()
@@ -36,7 +35,7 @@ public class Timer : MonoBehaviour
             timeUpEvent.Invoke();
         } else
         {
-            Debug.Log("Buzz Buzz");
+            Debug.Log("No Event attached for Timer!");
         }
         
     }
