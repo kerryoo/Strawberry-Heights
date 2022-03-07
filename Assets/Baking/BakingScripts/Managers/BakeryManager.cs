@@ -11,17 +11,19 @@ public class BakeryManager : GameManager
 
     [SerializeField] UIManager uiManager;
     [SerializeField] TicketManager ticketManager;
+    [SerializeField] DataManager dataManager;
+
+    public string username { get; set; }
+    public float cash { get; set; }
+    public int day { get; set; }
+    private bool dayInAction = false;
 
     [SerializeField] Timer dayTimer;
-    public float cash { get; private set; }
-
-    public int day {get; private set; }
-    private bool dayInAction = false;
-    
     
     private void Start()
     {
         //spawnCustomer();
+        username = "global";
         day = 1;
         Cursor.lockState = CursorLockMode.Locked;
         startDay();
@@ -38,7 +40,7 @@ public class BakeryManager : GameManager
         //        startDay();
         //    } else
         //    {
-        //        uiManager.openDayStartModal(day);
+        //        uiManager.openDayStartModal(dataManager.day);
         //    }
         //}
 
@@ -57,6 +59,7 @@ public class BakeryManager : GameManager
                 Cursor.lockState = CursorLockMode.Locked;
             }
         }
+
     }
 
     private void startDay()
