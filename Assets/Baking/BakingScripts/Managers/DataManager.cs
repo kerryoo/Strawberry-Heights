@@ -13,29 +13,12 @@ using System.IO;
  * user.
  * 
  * WARNING: This implementation relies on the fact that all usernames will
- * be unique. Additionally, there are 7 spots you must modifiy when adding
+ * be unique. Additionally, there are 4 spots you must modifiy when adding
  * fields.
  */
 public class DataManager : MonoBehaviour
 {
-    // Constants
-    const string DEFAULT_USERNAME      = "global";
-    const int    INIT_DAY              = 1;
-    const float  INIT_CASH             = 0f;
-    const bool   DEFAULT_DAY_IN_ACTION = true;
-
-    public string username    { get; set; }
-    public int    day         { get; set; }
-    public float  cash        { get; set; }
-    public bool   dayInAction { get; set; }
-
-    void Start()
-    {
-        username    = DEFAULT_USERNAME;
-        day         = INIT_DAY;
-        cash        = INIT_CASH;
-        dayInAction = DEFAULT_DAY_IN_ACTION;
-    }
+    [SerializeField] BakeryManager bakeryManager;
 
     // CREATE and UPDATE
     public void SaveGame()
@@ -43,7 +26,7 @@ public class DataManager : MonoBehaviour
         BinaryFormatter bf = new BinaryFormatter();
 
         string dirPath = String.Format("{0}/{1}",
-            Application.persistentDataPath, username);
+            Application.persistentDataPath, bakeryManager.username);
         if (!Directory.Exists(dirPath))
         {
             Directory.CreateDirectory(dirPath);
@@ -53,10 +36,9 @@ public class DataManager : MonoBehaviour
 
         SaveData data = new SaveData()
         {
-            username    = username,
-            day         = day,
-            cash        = cash,
-            dayInAction = dayInAction
+            username = bakeryManager.username,
+            day      = bakeryManager.day,
+            cash     = bakeryManager.cash
         };
 
         bf.Serialize(file, data);
@@ -75,10 +57,9 @@ public class DataManager : MonoBehaviour
             SaveData data = (SaveData)bf.Deserialize(file);
             file.Close();
 
-            username    = data.username;
-            day         = data.day;
-            cash        = data.cash;
-            dayInAction = data.dayInAction;
+            bakeryManager.username = data.username;
+            bakeryManager.day      = data.day;
+            bakeryManager.cash     = data.cash;
 
             Debug.Log("Game data loaded!");
         }
@@ -92,10 +73,9 @@ public class DataManager : MonoBehaviour
         if (File.Exists(getDataFilePath()))
         {
             File.Delete(getDataFilePath());
-            username    = DEFAULT_USERNAME;
-            day         = INIT_DAY;
-            cash        = INIT_CASH;
-            dayInAction = DEFAULT_DAY_IN_ACTION;
+            bakeryManager.username = "global";
+            bakeryManager.day      = 1;
+            bakeryManager.cash     = 0f;
             Debug.Log("Data reset complete!");
         }
         else
@@ -113,7 +93,7 @@ public class DataManager : MonoBehaviour
     private string getDataFilePath()
     {
         return String.Format("{0}/{1}/BakeryData.dat",
-            Application.persistentDataPath, username);
+            Application.persistentDataPath, bakeryManager.username);
     }
 }
 
@@ -123,5 +103,4 @@ class SaveData
     public string username;
     public int    day;
     public float  cash;
-    public bool   dayInAction;
 }

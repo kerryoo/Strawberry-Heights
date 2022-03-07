@@ -13,11 +13,18 @@ public class BakeryManager : GameManager
     [SerializeField] TicketManager ticketManager;
     [SerializeField] DataManager dataManager;
 
+    public string username { get; set; }
+    public float cash { get; set; }
+    public int day { get; set; }
+    private bool dayInAction = false;
+
     [SerializeField] Timer dayTimer;
     
     private void Start()
     {
         //spawnCustomer();
+        username = "global";
+        day = 1;
         Cursor.lockState = CursorLockMode.Locked;
         startDay();
 
@@ -37,7 +44,7 @@ public class BakeryManager : GameManager
         //    }
         //}
 
-        if (dataManager.dayInAction)
+        if (dayInAction)
         {
             dailyActivitiesUpdate();
         }
@@ -53,35 +60,20 @@ public class BakeryManager : GameManager
             }
         }
 
-        // TESTING: saving game data
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            dataManager.SaveGame();
-        }
-
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            dataManager.cash += 1.0f;
-        }
-
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            dataManager.LoadGame();
-        }
     }
 
     private void startDay()
     {
         dayTimer.timeUpEvent.AddListener(onDayEnd);
         dayTimer.setTimer(BalanceSheet.timePerLevel);
-        dataManager.dayInAction = true;
+        dayInAction = true;
     }
 
     private void onDayEnd()
     {
         dayTimer.timeUpEvent.RemoveAllListeners();
-        uiManager.openDayEndModal(dataManager.day);
-        dataManager.dayInAction = false;
+        uiManager.openDayEndModal(day);
+        dayInAction = false;
     }
 
     private void dailyActivitiesUpdate()
