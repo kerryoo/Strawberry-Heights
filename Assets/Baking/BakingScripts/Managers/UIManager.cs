@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] ProgressBar progressBar;
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] TextMeshProUGUI tipsEarnedText;
-    [SerializeField] BakeryManager gameManager;
+    [SerializeField] DataManager dataManager;
     [SerializeField] Timer DayTimer;
 
     private Dictionary<int, string> dayToDescription;
@@ -47,9 +47,9 @@ public class UIManager : MonoBehaviour
     private string getTipsString()
     {
         string tipsToDisplay = "0.00";
-        if (gameManager.cash < -0.001 || gameManager.cash > 0.001)
+        if (dataManager.cash < -0.001 || dataManager.cash > 0.001)
         {
-            tipsToDisplay = gameManager.cash.ToString("#.##");
+            tipsToDisplay = dataManager.cash.ToString("#.##");
         }
         return tipsToDisplay;
     }

@@ -11,18 +11,13 @@ public class BakeryManager : GameManager
 
     [SerializeField] UIManager uiManager;
     [SerializeField] TicketManager ticketManager;
+    [SerializeField] DataManager dataManager;
 
     [SerializeField] Timer dayTimer;
-    public float cash { get; private set; }
-
-    public int day {get; private set; }
-    private bool dayInAction = false;
-    
     
     private void Start()
     {
         //spawnCustomer();
-        day = 1;
         Cursor.lockState = CursorLockMode.Locked;
         startDay();
 
@@ -38,11 +33,11 @@ public class BakeryManager : GameManager
         //        startDay();
         //    } else
         //    {
-        //        uiManager.openDayStartModal(day);
+        //        uiManager.openDayStartModal(dataManager.day);
         //    }
         //}
 
-        if (dayInAction)
+        if (dataManager.dayInAction)
         {
             dailyActivitiesUpdate();
         }
@@ -57,20 +52,36 @@ public class BakeryManager : GameManager
                 Cursor.lockState = CursorLockMode.Locked;
             }
         }
+
+        // TESTING: saving game data
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            dataManager.SaveGame();
+        }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            dataManager.cash += 1.0f;
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            dataManager.LoadGame();
+        }
     }
 
     private void startDay()
     {
         dayTimer.timeUpEvent.AddListener(onDayEnd);
         dayTimer.setTimer(BalanceSheet.timePerLevel);
-        dayInAction = true;
+        dataManager.dayInAction = true;
     }
 
     private void onDayEnd()
     {
         dayTimer.timeUpEvent.RemoveAllListeners();
-        uiManager.openDayEndModal(day);
-        dayInAction = false;
+        uiManager.openDayEndModal(dataManager.day);
+        dataManager.dayInAction = false;
     }
 
     private void dailyActivitiesUpdate()
