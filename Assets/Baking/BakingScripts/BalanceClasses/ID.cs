@@ -18,4 +18,9 @@ public class ID
         Blueberry,
         Blackberry
     }
+
+    public enum DecorationID
+    {
+
+    }
 }
