@@ -5,20 +5,44 @@ using UnityEngine.AI;
 
 public class BakeryManager : GameManager
 {
-    // Customer
-    [SerializeField] GameObject customerPreFab;
-    [SerializeField] Vector3 customerSpawnPoint;
+    private static BakeryManager instance;
 
     [SerializeField] UIManager uiManager;
     [SerializeField] TicketManager ticketManager;
+    [SerializeField] DessertManager dessertManager;
 
     [SerializeField] Timer dayTimer;
     public float cash { get; private set; }
 
     public int day {get; private set; }
     private bool dayInAction = false;
-    
-    
+
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    public static BakeryManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                Debug.Log("Bakery Manager not initialized!");
+                return null;
+            }
+            return instance;
+        }
+    }
+
+    public GameObject GetCakeCombination(int ingredient1, int ingredient2)
+    {
+        return dessertManager.GetCakeCombination(ingredient1, ingredient2);
+    }
+
+
+
     private void Start()
     {
         //spawnCustomer();

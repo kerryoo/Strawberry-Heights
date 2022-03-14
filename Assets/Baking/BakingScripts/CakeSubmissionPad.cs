@@ -8,9 +8,9 @@ public class CakeSubmissionPad : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.transform.GetComponent<Cake>() != null)
+        if (collision.transform.GetComponent<Dessert>() != null)
         {
-            ticketManager.submittedCake = collision.transform.GetComponent<Cake>();
+            ticketManager.submittedCake = collision.transform.GetComponent<Dessert>();
             ticketManager.onOrderReady();
         }
     }

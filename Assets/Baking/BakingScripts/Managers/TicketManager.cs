@@ -36,7 +36,7 @@ public class TicketManager : MonoBehaviour
     private int ticketNumber = 0;
 
     public Ticket submittedTicket;
-    public Cake submittedCake;
+    public Dessert submittedCake;
 
     private void Start()
     {
@@ -77,11 +77,11 @@ public class TicketManager : MonoBehaviour
 
     private void writeTicket(int id, Ticket ticket)
     {
-        Dictionary<int, int> justOneStrawberry = new Dictionary<int, int>();
-        justOneStrawberry[(int)ID.ToppingID.Strawberry] = 1;
+        //Dictionary<int, int> justOneStrawberry = new Dictionary<int, int>();
+        //justOneStrawberry[(int)ID.ToppingID.Strawberry] = 1;
 
-        ticket.setTicket(id, (int)ID.CakeID.Lemon, justOneStrawberry, BalanceSheet.timePerTicket, this);
-        ticket.ticketDestroyedEvent.AddListener(onTicketDestroyed);
+        //ticket.setTicket(id, (int)ID.CakeID.Lemon, justOneStrawberry, BalanceSheet.timePerTicket, this);
+        //ticket.ticketDestroyedEvent.AddListener(onTicketDestroyed);
     }
 
     private void onTicketDestroyed(int id)
