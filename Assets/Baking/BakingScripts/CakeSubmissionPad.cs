@@ -4,19 +4,14 @@ using UnityEngine;
 
 public class CakeSubmissionPad : MonoBehaviour
 {
-    [SerializeField] TicketManager ticketManager;
 
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.GetComponent<Dessert>() != null)
+        Box collidedBox = collision.transform.GetComponent<Box>();
+        if (collidedBox != null && collidedBox.gradeable())
         {
-            ticketManager.submittedCake = collision.transform.GetComponent<Dessert>();
-            ticketManager.onOrderReady();
+
         }
     }
 
-    private void OnCollisionExit(Collision collision)
-    {
-        ticketManager.submittedCake = null;
-    }
 }

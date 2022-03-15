@@ -52,10 +52,10 @@ public class Dessert : MonoBehaviour
             }
             else if (pullApartResultCount == 4)
             {
-                Instantiate(pullApartResult, transform.position + new Vector3(-0.5f, 0, 0), Quaternion.identity);
-                Instantiate(pullApartResult, transform.position + new Vector3(0.5f, 0, 0), Quaternion.identity);
-                Instantiate(pullApartResult, transform.position + new Vector3(0, 0, 0.5f), Quaternion.identity);
-                Instantiate(pullApartResult, transform.position + new Vector3(0, 0, -0.5f), Quaternion.identity);
+                Instantiate(pullApartResult, transform.position + new Vector3(-0.25f, 0, 0), Quaternion.identity);
+                Instantiate(pullApartResult, transform.position + new Vector3(0.25f, 0, 0), Quaternion.identity);
+                Instantiate(pullApartResult, transform.position + new Vector3(0, 0, 0.25f), Quaternion.identity);
+                Instantiate(pullApartResult, transform.position + new Vector3(0, 0, -0.25f), Quaternion.identity);
             }
             Destroy(gameObject);
         }
@@ -100,8 +100,14 @@ public class Dessert : MonoBehaviour
         //TODO play a bad sound
     }
 
-    
+    public int getCakeShape()
+    {
+        return cakeType / 100;
+    }
 
-
+    public int getCakeFlavor()
+    {
+        return cakeType % 100;
+    }
 
 }

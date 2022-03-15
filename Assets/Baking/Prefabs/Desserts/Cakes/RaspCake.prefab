@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f0593f9d8222425085105f597d8c2ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cakeType: 1006
+  cakeType: 1007
   pullApartResult: {fileID: 7661261382017533507, guid: e283555cd53d74e6abba7acc9772af52, type: 3}
   pullApartResultCount: 4
   combinations:

@@ -9,12 +9,13 @@ public class ID
         MatchaCake = 1003,
         ChocolateCake = 1004,
         RedVelvetCake = 1005,
+        RainbowCake = 1006,
 
-        RaspberryCake = 1006,
-        OreoCake = 1007,
-        PassionFruitCake = 1008,
-        ChocolateMatchaCake = 1009,
-        RainbowCake = 1010,
+        RaspberryCake = 1007,
+        OreoCake = 1008,
+        PassionFruitCake = 1009,
+        ChocolateMatchaCake = 1010,
+        
         BigRainbowCake = 1011,
         HugeRainbowCake = 1012,
 
@@ -73,8 +74,24 @@ public class ID
         OrangeWhole = 2102
     }
 
-    public enum DecorationID
+    public enum CakeShapeID
     {
+        Cake = 10,
+        Slice = 11,
+        Cupcake = 12,
+        Cheesecake = 13,
+        CheeseSlice = 14,
+        CheeseMini = 15
+    }
 
+    public enum FlavorID
+    {
+        Base = 0,
+        Lemon = 1,
+        Orange = 2,
+        Matcha = 3,
+        Chocolate = 4,
+        RedVelvet = 5,
+        Rainbow = 6
     }
 }

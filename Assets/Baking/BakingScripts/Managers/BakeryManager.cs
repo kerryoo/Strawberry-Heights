@@ -52,18 +52,6 @@ public class BakeryManager : GameManager
 
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.P) || OVRInput.GetDown(OVRInput.Button.Two))
-        //{
-        //    if (uiManager.isModalOn())
-        //    {
-        //        uiManager.closeModal();
-        //        startDay();
-        //    } else
-        //    {
-        //        uiManager.openDayStartModal(dataManager.day);
-        //    }
-        //}
-
         if (dayInAction)
         {
             dailyActivitiesUpdate();
