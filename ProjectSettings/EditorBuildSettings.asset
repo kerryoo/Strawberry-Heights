@@ -9,14 +9,17 @@ EditorBuildSettings:
     path: Assets/Oculus/VR/Scenes/HandTest.unity
     guid: b9a31e08066d6e343a208d34ec298f09
   - enabled: 0
-    path: Assets/Scenes/BakeryOculus.unity
-    guid: df21eee2f9df6493e98566885b5917fb
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/BakeryMainScene.unity
     guid: 170e55e1259a540509f1b112bfbdf31c
   - enabled: 0
     path: Assets/AutoHand/Examples/Scenes/Oculus Integration/Demo.unity
     guid: f077d52fe9b27704b9cfab692a674a7a
+  - enabled: 0
+    path: Assets/Oculus/VR/Scenes/UI.unity
+    guid: 1f4d3ae64a10d434db219de8b14348e1
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: cf2965ce4195d4c2c95308e36893fca3, type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 387f5bfa85c4e4517bc49c6e1fec80d5, type: 2}

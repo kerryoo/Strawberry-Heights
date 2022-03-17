@@ -52,9 +52,9 @@ public class Customer : MonoBehaviour
         StartCoroutine(goToWaitingRoutine(waitingLocation));
     }
 
-    public void pickUpOrder(Vector3 pickUpLocation)
+    public void onOrderCompleted(int grade, Vector3 pickUpLocation)
     {
-        StartCoroutine(pickUpRoutine(pickUpLocation));
+        StartCoroutine(pickUpRoutine(grade, pickUpLocation));
     }
 
     IEnumerator goToLinePositionRoutine(Vector3 lineLocation)
@@ -89,7 +89,7 @@ public class Customer : MonoBehaviour
         yield return StartCoroutine(goToLocation(waitingLocation));
     }
 
-    IEnumerator pickUpRoutine(Vector3 pickUpLocation)
+    IEnumerator pickUpRoutine(int grade, Vector3 pickUpLocation)
     {
         yield return StartCoroutine(goToLocation(pickUpLocation));
         customerAnimator.SetBool("Dance", true);
@@ -134,10 +134,7 @@ public class Customer : MonoBehaviour
 
 
 
-    public void onOrderCompleted()
-    {
-
-    }
+    
 
     public void onTicketTimeOut()
     {

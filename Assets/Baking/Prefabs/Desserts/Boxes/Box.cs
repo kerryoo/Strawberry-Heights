@@ -9,20 +9,19 @@ public class Box : MonoBehaviour
     [SerializeField] PlacePoint ticketPlacePoint;
     [SerializeField] SphereCollider placePointCollider;
 
-    List<Dessert> connectedDesserts = new List<Dessert>();
+    public List<Dessert> connectedDesserts { get; private set; }
+
+    public bool submitted = false;
 
     [SerializeField] Transform cakePlacePosition;
     [SerializeField] Transform[] slicePlacePositions;
     private int sliceIndex = 0;
-    private Ticket attachedTicket;
+    public Ticket attachedTicket { get; private set; }
 
     private void Start()
     {
+        connectedDesserts = new List<Dessert>();
         disablePlaceholder();
-    }
-
-    private void Update()
-    {
     }
 
     private void OnCollisionEnter(Collision collision)

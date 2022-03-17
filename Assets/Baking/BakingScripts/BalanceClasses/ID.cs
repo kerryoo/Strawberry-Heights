@@ -25,11 +25,12 @@ public class ID
         MatchaSlice = 1103,
         ChocolateSlice = 1104,
         RedVelvetSlice = 1105,
-        RaspberrySlice = 1106,
-        OreoSlice = 1107,
-        PassionFruitSlice = 1108,
-        ChocolateMatchaSlice = 1109,
-        RainbowSlice = 1110,
+        RainbowSlice = 1106,
+
+        RaspberrySlice = 1107,
+        OreoSlice = 1108,
+        PassionFruitSlice = 1109,
+        ChocolateMatchaSlice = 1110,
 
         BaseCupcake = 1200,
         LemonCupcake = 1201,
@@ -92,6 +93,10 @@ public class ID
         Matcha = 3,
         Chocolate = 4,
         RedVelvet = 5,
-        Rainbow = 6
+        Rainbow = 6,
+        Raspberry = 7,
+        Oreo = 8,
+        PassionFruit = 9,
+        ChocolateMatcha = 10,
     }
 }

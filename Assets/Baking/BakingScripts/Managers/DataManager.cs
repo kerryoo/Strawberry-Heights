@@ -21,7 +21,7 @@ public class DataManager : MonoBehaviour
     [SerializeField] BakeryManager bakeryManager;
 
     // CREATE and UPDATE
-    public void SaveGame()
+    public void SaveGame(SaveData saveData)
     {
         BinaryFormatter bf = new BinaryFormatter();
 
@@ -34,14 +34,7 @@ public class DataManager : MonoBehaviour
 
         FileStream file = File.Create(dirPath + "/BakeryData.dat");
 
-        SaveData data = new SaveData()
-        {
-            username = bakeryManager.username,
-            day      = bakeryManager.day,
-            cash     = bakeryManager.cash
-        };
-
-        bf.Serialize(file, data);
+        bf.Serialize(file, saveData);
         file.Close();
         Debug.Log("Game data saved!");
     }
@@ -57,9 +50,7 @@ public class DataManager : MonoBehaviour
             SaveData data = (SaveData)bf.Deserialize(file);
             file.Close();
 
-            bakeryManager.username = data.username;
-            bakeryManager.day      = data.day;
-            bakeryManager.cash     = data.cash;
+            bakeryManager.loadGame(data);
 
             Debug.Log("Game data loaded!");
         }
@@ -73,9 +64,6 @@ public class DataManager : MonoBehaviour
         if (File.Exists(getDataFilePath()))
         {
             File.Delete(getDataFilePath());
-            bakeryManager.username = "global";
-            bakeryManager.day      = 1;
-            bakeryManager.cash     = 0f;
             Debug.Log("Data reset complete!");
         }
         else
@@ -97,10 +85,3 @@ public class DataManager : MonoBehaviour
     }
 }
 
-[Serializable]
-class SaveData
-{
-    public string username;
-    public int    day;
-    public float  cash;
-}

@@ -20,8 +20,6 @@ public class TicketManager : MonoBehaviour
 
     [SerializeField] Transform pickUpLocation;
 
-    [SerializeField] BakeryManager bakeryManager;
-
     [SerializeField] Transform[] lineWaitLocations;
     [SerializeField] Transform[] orderWaitLocations;
     private int waitIndex = 0;
@@ -32,6 +30,8 @@ public class TicketManager : MonoBehaviour
     private Dictionary<int, Ticket> idToTicket;
     private Dictionary<int, Customer> idToCustomer;
     private List<Customer> customerLine;
+
+    private int[] possibleCakes;
 
     private int ticketNumber = 0;
 
@@ -77,11 +77,13 @@ public class TicketManager : MonoBehaviour
 
     private void writeTicket(int id, Ticket ticket)
     {
-        //Dictionary<int, int> justOneStrawberry = new Dictionary<int, int>();
-        //justOneStrawberry[(int)ID.ToppingID.Strawberry] = 1;
+        int index = Random.Range(0, possibleCakes.Length);
+        Dictionary<int, int> cakeToCount = new Dictionary<int, int>();
 
-        //ticket.setTicket(id, (int)ID.CakeID.Lemon, justOneStrawberry, BalanceSheet.timePerTicket, this);
-        //ticket.ticketDestroyedEvent.AddListener(onTicketDestroyed);
+        cakeToCount[possibleCakes[index]] = 1;
+
+        ticket.setTicket(id, BalanceSheet.timePerTicket, cakeToCount);
+        ticket.ticketDestroyedEvent.AddListener(onTicketDestroyed);
     }
 
     private void onTicketDestroyed(int id)
@@ -140,15 +142,6 @@ public class TicketManager : MonoBehaviour
 
     }
 
-    public void onOrderReady()
-    {
-        if (submittedCake != null && submittedTicket != null)
-        {
-            Debug.Log("Ticket ready");
-            Customer customerToPickUp = idToCustomer[submittedTicket.id];
-            customerToPickUp.pickUpOrder(pickUpLocation.position);
-        }
-    }
 
     private void moveLine()
     {
@@ -234,6 +227,19 @@ public class TicketManager : MonoBehaviour
         
         customerList.RemoveRange(0, numberOfCustomersToSeat);
 
+    }
+
+    public void onTicketComplete(int ticketId, int grade)
+    {
+        idToCustomer[ticketId].onOrderCompleted(grade, pickUpLocation.position);
+
+        idToCustomer.Remove(ticketId);
+        idToTicket.Remove(ticketId);
+    }
+
+    public void onNewDay(int day, int level)
+    {
+        possibleCakes = BalanceSheet.levelToPossibleCakes[level];
     }
 
     public void dayReset()

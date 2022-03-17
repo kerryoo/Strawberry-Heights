@@ -7,25 +7,18 @@ using UnityEngine.UI;
 public class Ticket : MonoBehaviour
 {
     public int id { get; private set; }
-    public int cakeType;
-    public Dictionary<int, int> toppingsToCount;
-
     private float time;
-    private bool beingHeld = false;
-    private bool nearTicketBoard = false;
-    private TicketManager ticketManager;
-
-    private FixedJoint stickiness;
+    public Dictionary<int, int> cakesToCounts { get; private set; }
 
     [SerializeField] Timer timer;
 
     [SerializeField] TicketImage ticketImage;
     [SerializeField] RawImage[] ticketNumberDigits;
     [SerializeField] RawImage[] timeDigits;
-    [SerializeField] RawImage cakeImage;
-    [SerializeField] RawImage[] toppingImages;
-    [SerializeField] RawImage[] toppingDigits;
-    [SerializeField] RawImage[] toppingXs;
+
+    [SerializeField] RawImage[] cakeImages;
+    [SerializeField] RawImage[] cakeDigits;
+    [SerializeField] RawImage[] cakeXs;
 
     public TicketDestroyedEvent ticketDestroyedEvent;
 
@@ -34,19 +27,21 @@ public class Ticket : MonoBehaviour
         setTimeUI(timer.timeLeft);
     }
 
-    public void setTicket(int id, int cakeType, Dictionary<int, int> toppingsToCount, float time, TicketManager ticketManager)
+    public float getTimeLeft()
+    {
+        return timer.timeLeft;
+    }
+
+    public void setTicket(int id, float time, Dictionary<int, int> cakesToCounts)
     {
         this.id = id;
-        this.cakeType = cakeType;
-        this.toppingsToCount = toppingsToCount;
         this.time = time;
-        this.ticketManager = ticketManager;
+        this.cakesToCounts = cakesToCounts;
 
         timer.timeUpEvent.AddListener(onTimeUp);
 
         setTicketNumberUI();
         setCakeUI();
-        setToppingsUI();
     }
 
     private void setTicketNumberUI()
@@ -63,37 +58,6 @@ public class Ticket : MonoBehaviour
                 ticketNumberDigits[index].texture = ticketImage.getDigit(idCopy % 10);
                 idCopy /= 10;
                 index -= 1;
-            }
-        }
-    }
-
-    private void setCakeUI()
-    {
-        cakeImage.texture = ticketImage.getCake(cakeType);
-    }
-
-    private void setToppingsUI()
-    {
-        if (toppingsToCount.Count > 3)
-        {
-            Debug.Log("Too many topping types!");
-        } else
-        {
-            int index = 2;
-            while (index > toppingsToCount.Count - 1)
-            {
-                toppingImages[index].enabled = false;
-                toppingDigits[index].enabled = false;
-                toppingXs[index].enabled = false;
-                index--;
-            }
-
-            index = 0;
-            foreach (int topping in toppingsToCount.Keys)
-            {
-                toppingImages[index].texture = ticketImage.getTopping(topping);
-                toppingDigits[index].texture = ticketImage.getDigit(toppingsToCount[topping]);
-                index++;
             }
         }
     }
@@ -128,27 +92,30 @@ public class Ticket : MonoBehaviour
         timer.timeUpEvent.RemoveAllListeners();
     }
 
-    private void setNearTicketBoard(bool nearTicketBoard)
+    private void setCakeUI()
     {
-        this.nearTicketBoard = nearTicketBoard;
+        if (cakesToCounts.Count > 3)
+        {
+            Debug.Log("Too many cake types!");
+        }
+        else
+        {
+            int index = 0;
+            foreach (int cake in cakesToCounts.Keys)
+            {
+                cakeImages[index].texture = ticketImage.getCake(cake);
+                cakeDigits[index].texture = ticketImage.getDigit(cakesToCounts[cake]);
+                index++;
+            }
+
+            while (index < 3)
+            {
+                cakeImages[index].enabled = false;
+                cakeDigits[index].enabled = false;
+                cakeXs[index].enabled = false;
+                index++;
+            }
+        }
     }
-
-    // //Stickiness
-    // private void OnCollisionEnter(Collision collision)
-    // {
-    //     if (!beingHeld && collision.transform.GetComponent<TicketBoard>() != null)
-    //     {
-    //         stickiness = gameObject.AddComponent<FixedJoint>();
-    //         stickiness.connectedBody = collision.rigidbody;
-    //     }
-    // }
-
-    //public void OnGrab()
-    //{
-    //     Destroy(stickiness);
-    //     beingHeld = true;
-    //}
-
-
 
 }

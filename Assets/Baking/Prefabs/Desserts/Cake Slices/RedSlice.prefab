@@ -133,6 +133,7 @@ MonoBehaviour:
   combinations:
     DessertAddendIds: 
     DessertSumObjects: []
+  timer: {fileID: 0}
 --- !u!114 &2560102730367058379
 MonoBehaviour:
   m_ObjectHideFlags: 0

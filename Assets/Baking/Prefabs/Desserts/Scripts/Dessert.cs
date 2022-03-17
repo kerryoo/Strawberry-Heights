@@ -18,6 +18,12 @@ public class Dessert : MonoBehaviour
     [SerializeField] int pullApartResultCount;
     [SerializeField] Combinations combinations;
 
+    private Timer timer;
+    private List<float> timesToDiminishFreshness;
+
+    public int freshness { get; private set;}
+    public int quality { get; private set; }
+
     private void Start()
     {
         if (combinations.DessertAddendIds.Length != combinations.DessertSumObjects.Length)
@@ -27,6 +33,35 @@ public class Dessert : MonoBehaviour
         Grabbable grabbable = GetComponent<Grabbable>();
         grabbable.body = GetComponent<Rigidbody>();
         grabbable.OnJointBreak.AddListener(onPullApart);
+
+        freshness = 5;
+        quality = 5;
+        timesToDiminishFreshness = new List<float>();
+        timer = gameObject.AddComponent<Timer>();
+        timer.setTimer(BalanceSheet.cakeFreshnessTime);
+
+
+        for (int i = 0; i < BalanceSheet.freshnessDiminishTimeMultipliers.Length; i++)
+        {
+            timesToDiminishFreshness.Add(Time.time + BalanceSheet.freshnessDiminishTimeMultipliers[i] * BalanceSheet.cakeFreshnessTime);
+        }
+    }
+
+    private void Update()
+    {
+        if (timesToDiminishFreshness.Count > 0 && Time.time > timesToDiminishFreshness[0])
+        {
+            Debug.Log("Time is " + Time.time);
+
+            freshness--;
+            Debug.Log("Quality is " + freshness);
+            timesToDiminishFreshness.RemoveAt(0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Debug.Log(freshness);
+        }
     }
 
     void onPullApart(Autohand.Hand hand, Grabbable grabbable)
@@ -108,6 +143,11 @@ public class Dessert : MonoBehaviour
     public int getCakeFlavor()
     {
         return cakeType % 100;
+    }
+
+    public int getCakeType()
+    {
+        return cakeType;
     }
 
 }
