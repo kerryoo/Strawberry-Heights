@@ -1085,7 +1085,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grass_02 (5)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7431356610595381324, guid: e636e1f854a1eba4c97c3ce9a504e263, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e636e1f854a1eba4c97c3ce9a504e263, type: 3}
 --- !u!4 &79904793 stripped
 Transform:
@@ -1207,7 +1208,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grass_02 (11)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7431356610595381324, guid: e636e1f854a1eba4c97c3ce9a504e263, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e636e1f854a1eba4c97c3ce9a504e263, type: 3}
 --- !u!4 &85925818 stripped
 Transform:
@@ -1898,7 +1900,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flower_04 (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2891369717530148210, guid: f20ee0f5afae0ce49a788e4001aebf83, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f20ee0f5afae0ce49a788e4001aebf83, type: 3}
 --- !u!4 &141978694 stripped
 Transform:
@@ -2245,7 +2248,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grass_02 (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7431356610595381324, guid: e636e1f854a1eba4c97c3ce9a504e263, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e636e1f854a1eba4c97c3ce9a504e263, type: 3}
 --- !u!4 &167096154 stripped
 Transform:
@@ -2307,7 +2311,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grass_02 (7)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7431356610595381324, guid: e636e1f854a1eba4c97c3ce9a504e263, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e636e1f854a1eba4c97c3ce9a504e263, type: 3}
 --- !u!4 &168275002 stripped
 Transform:
@@ -2530,7 +2535,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flower_02
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1914742776403151254, guid: d9d4dce11aa583e4ca09e17348f3d837, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d9d4dce11aa583e4ca09e17348f3d837, type: 3}
 --- !u!4 &175954242 stripped
 Transform:
@@ -2551,7 +2557,7 @@ GameObject:
   - component: {fileID: 176386438}
   - component: {fileID: 176386442}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: SubmissionPad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2646,6 +2652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bakeryManager: {fileID: 340573657}
+  cashExplosion: {fileID: 6337294328216356746, guid: 0d084d447f0524b78a42eb57b299f617, type: 3}
 --- !u!1001 &178624005
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3637,7 +3644,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grass_03 (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9064921860095984122, guid: 720cb3311817d8041ba00cb5596ba94f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 720cb3311817d8041ba00cb5596ba94f, type: 3}
 --- !u!4 &282032175 stripped
 Transform:
@@ -5900,7 +5908,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grass_03 (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9064921860095984122, guid: 720cb3311817d8041ba00cb5596ba94f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 720cb3311817d8041ba00cb5596ba94f, type: 3}
 --- !u!4 &464833358 stripped
 Transform:
@@ -8182,7 +8191,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grass_03 (5)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9064921860095984122, guid: 720cb3311817d8041ba00cb5596ba94f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 720cb3311817d8041ba00cb5596ba94f, type: 3}
 --- !u!4 &660660402 stripped
 Transform:
@@ -10248,7 +10258,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &789224026
 Transform:
   m_ObjectHideFlags: 0
@@ -12264,7 +12274,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flower_01 (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1179547820376869974, guid: 1f9d89de285c752499c38f12e31819b3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1f9d89de285c752499c38f12e31819b3, type: 3}
 --- !u!4 &905184120 stripped
 Transform:
@@ -12744,7 +12755,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 691601238029702043, guid: 0655b9a7eaa74834081a43804c104a55, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0655b9a7eaa74834081a43804c104a55, type: 3}
 --- !u!4 &933356472 stripped
 Transform:
@@ -12880,7 +12892,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grass_03 (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9064921860095984122, guid: 720cb3311817d8041ba00cb5596ba94f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 720cb3311817d8041ba00cb5596ba94f, type: 3}
 --- !u!4 &937926371 stripped
 Transform:
@@ -13468,7 +13481,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grass_02 (9)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7431356610595381324, guid: e636e1f854a1eba4c97c3ce9a504e263, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e636e1f854a1eba4c97c3ce9a504e263, type: 3}
 --- !u!4 &981524907 stripped
 Transform:
@@ -15092,7 +15106,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grass_03 (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9064921860095984122, guid: 720cb3311817d8041ba00cb5596ba94f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 720cb3311817d8041ba00cb5596ba94f, type: 3}
 --- !u!4 &1113706267 stripped
 Transform:
@@ -15284,7 +15299,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flower_01
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1179547820376869974, guid: 1f9d89de285c752499c38f12e31819b3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1f9d89de285c752499c38f12e31819b3, type: 3}
 --- !u!4 &1128696391 stripped
 Transform:
@@ -16383,7 +16399,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grass_02 (10)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7431356610595381324, guid: e636e1f854a1eba4c97c3ce9a504e263, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e636e1f854a1eba4c97c3ce9a504e263, type: 3}
 --- !u!4 &1180289314 stripped
 Transform:
@@ -17102,7 +17119,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grass_02 (12)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7431356610595381324, guid: e636e1f854a1eba4c97c3ce9a504e263, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e636e1f854a1eba4c97c3ce9a504e263, type: 3}
 --- !u!4 &1235026549 stripped
 Transform:
@@ -17226,7 +17244,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grass_03
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9064921860095984122, guid: 720cb3311817d8041ba00cb5596ba94f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 720cb3311817d8041ba00cb5596ba94f, type: 3}
 --- !u!4 &1250945483 stripped
 Transform:
@@ -17659,7 +17678,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grass_03 (6)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9064921860095984122, guid: 720cb3311817d8041ba00cb5596ba94f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 720cb3311817d8041ba00cb5596ba94f, type: 3}
 --- !u!4 &1291048627 stripped
 Transform:
@@ -21094,7 +21114,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grass_02 (13)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7431356610595381324, guid: e636e1f854a1eba4c97c3ce9a504e263, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e636e1f854a1eba4c97c3ce9a504e263, type: 3}
 --- !u!4 &1545865485 stripped
 Transform:
@@ -22293,7 +22314,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grass_02 (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7431356610595381324, guid: e636e1f854a1eba4c97c3ce9a504e263, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e636e1f854a1eba4c97c3ce9a504e263, type: 3}
 --- !u!4 &1618481514 stripped
 Transform:
@@ -22649,7 +22671,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grass_02 (8)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7431356610595381324, guid: e636e1f854a1eba4c97c3ce9a504e263, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e636e1f854a1eba4c97c3ce9a504e263, type: 3}
 --- !u!4 &1646323027 stripped
 Transform:
@@ -22811,7 +22834,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flower_04
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2891369717530148210, guid: f20ee0f5afae0ce49a788e4001aebf83, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f20ee0f5afae0ce49a788e4001aebf83, type: 3}
 --- !u!4 &1657435078 stripped
 Transform:
@@ -24447,7 +24471,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grass_02
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7431356610595381324, guid: e636e1f854a1eba4c97c3ce9a504e263, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e636e1f854a1eba4c97c3ce9a504e263, type: 3}
 --- !u!4 &1764364733 stripped
 Transform:
@@ -24885,7 +24910,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grass_02 (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7431356610595381324, guid: e636e1f854a1eba4c97c3ce9a504e263, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e636e1f854a1eba4c97c3ce9a504e263, type: 3}
 --- !u!4 &1832934847 stripped
 Transform:
@@ -26160,7 +26186,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grass_02 (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7431356610595381324, guid: e636e1f854a1eba4c97c3ce9a504e263, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e636e1f854a1eba4c97c3ce9a504e263, type: 3}
 --- !u!4 &1986362300 stripped
 Transform:
@@ -28061,7 +28088,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grass_02 (6)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7431356610595381324, guid: e636e1f854a1eba4c97c3ce9a504e263, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e636e1f854a1eba4c97c3ce9a504e263, type: 3}
 --- !u!4 &2140583325 stripped
 Transform:

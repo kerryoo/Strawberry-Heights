@@ -22,7 +22,6 @@ public class Dessert : MonoBehaviour
     private List<float> timesToDiminishFreshness;
 
     public int freshness { get; private set;}
-    public int quality { get; private set; }
 
     private void Start()
     {
@@ -35,7 +34,6 @@ public class Dessert : MonoBehaviour
         grabbable.OnJointBreak.AddListener(onPullApart);
 
         freshness = 5;
-        quality = 5;
         timesToDiminishFreshness = new List<float>();
         timer = gameObject.AddComponent<Timer>();
         timer.setTimer(BalanceSheet.cakeFreshnessTime);

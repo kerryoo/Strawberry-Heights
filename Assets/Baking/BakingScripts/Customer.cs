@@ -10,6 +10,12 @@ public class Customer : MonoBehaviour
     [SerializeField] float targetPositionTolerance = 1f;
     [SerializeField] float targetRotationTolerance = 0.1f;
 
+    [SerializeField] GameObject[] angryFxs;
+    [SerializeField] GameObject[] disgustedFxs;
+    [SerializeField] GameObject[] satisfiedFxs;
+    [SerializeField] GameObject[] greatFxs;
+    [SerializeField] GameObject[] perfectFxs;
+
 
     public bool acting { get; private set; }
     private int ticketID = -1;
@@ -52,9 +58,9 @@ public class Customer : MonoBehaviour
         StartCoroutine(goToWaitingRoutine(waitingLocation));
     }
 
-    public void onOrderCompleted(int grade, Vector3 pickUpLocation)
+    public void onOrderCompleted(int reactionId, Vector3 pickUpLocation)
     {
-        StartCoroutine(pickUpRoutine(grade, pickUpLocation));
+        StartCoroutine(pickUpRoutine(reactionId, pickUpLocation));
     }
 
     IEnumerator goToLinePositionRoutine(Vector3 lineLocation)
@@ -89,9 +95,27 @@ public class Customer : MonoBehaviour
         yield return StartCoroutine(goToLocation(waitingLocation));
     }
 
-    IEnumerator pickUpRoutine(int grade, Vector3 pickUpLocation)
+    IEnumerator pickUpRoutine(int reactionId, Vector3 pickUpLocation)
     {
         yield return StartCoroutine(goToLocation(pickUpLocation));
+
+        if (reactionId == (int)ID.ReactionID.Disgusted)
+        {
+
+        } else if (reactionId == (int)ID.ReactionID.Satisfied)
+        {
+
+        } else if (reactionId == (int)ID.ReactionID.Great)
+        {
+
+        } else if (reactionId == (int)ID.ReactionID.Perfect)
+        {
+
+        } else
+        {
+
+        }
+
         customerAnimator.SetBool("Dance", true);
     }
 

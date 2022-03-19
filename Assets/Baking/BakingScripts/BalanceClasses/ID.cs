@@ -99,4 +99,13 @@ public class ID
         PassionFruit = 9,
         ChocolateMatcha = 10,
     }
+
+    public enum ReactionID
+    {
+        Angry = 0,
+        Disgusted = 1,
+        Satisfied = 2,
+        Great = 3,
+        Perfect = 4
+    }
 }

@@ -229,9 +229,9 @@ public class TicketManager : MonoBehaviour
 
     }
 
-    public void onTicketComplete(int ticketId, int grade)
+    public void onTicketComplete(int ticketId, int reactionId)
     {
-        idToCustomer[ticketId].onOrderCompleted(grade, pickUpLocation.position);
+        idToCustomer[ticketId].onOrderCompleted(reactionId, pickUpLocation.position);
 
         idToCustomer.Remove(ticketId);
         idToTicket.Remove(ticketId);

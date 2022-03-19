@@ -207,4 +207,3 @@ MonoBehaviour:
     DessertAddendIds: 4e040000
     DessertSumObjects:
     - {fileID: 1763981175980209558, guid: b6dfbfbb497884d73aedf25ae6a3dcdf, type: 3}
-  timer: {fileID: 0}

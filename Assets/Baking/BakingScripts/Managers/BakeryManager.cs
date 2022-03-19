@@ -107,13 +107,13 @@ public class BakeryManager : GameManager
         }
     }
 
-    public void gradeCake(List<Dessert> connectedDesserts, Dictionary<int, int> ticketOrder, float timeLeft, int ticketID)
+    public int gradeCake(List<Dessert> connectedDesserts, Dictionary<int, int> ticketOrder, float timeLeft, int ticketID)
     {
         int totalNumberOfCakes = 0;
 
-        float totalQuality = 0;
         float totalFreshness = 0;
         float rawEarnings = 0;
+        int incorrectness = 0;
 
         foreach (int cakeId in ticketOrder.Keys)
         {
@@ -127,7 +127,6 @@ public class BakeryManager : GameManager
                     if (connectedDesserts[j].getCakeType() == cakeId)
                     {
                         cakeIdCount--;
-                        totalQuality += connectedDesserts[j].quality;
                         totalFreshness += connectedDesserts[j].freshness;
                         rawEarnings += BalanceSheet.getCakePrice(cakeId);
                         connectedDesserts.RemoveAt(j);
@@ -136,27 +135,51 @@ public class BakeryManager : GameManager
 
                 while (cakeIdCount > 0)
                 {
-                    totalQuality += 1;
-                    totalFreshness += 1;
+                    incorrectness++;
                     cakeIdCount--;
                 }
             }
         }
 
-        totalNumberOfCakes += connectedDesserts.Count;
-        totalQuality += connectedDesserts.Count;
-        totalFreshness += connectedDesserts.Count;
+        incorrectness += connectedDesserts.Count;
 
-        float averageQuality = totalQuality / totalNumberOfCakes;
         float averageFreshness = totalFreshness / totalNumberOfCakes;
         float timeRating = calculateTimeRating(timeLeft);
 
-        int averageRating = (int) Math.Round(averageQuality + averageFreshness + timeRating) / 3;
+        int averageRating = (int) Math.Round(averageFreshness + timeRating) / 2;
+        averageRating -= incorrectness;
 
-        float totalEarnings = rawEarnings * BalanceSheet.ratingToMultiplier[averageRating];
-        dailyEarnings += totalEarnings;
+        if (averageRating < 1)
+        {
+            averageRating = 1;
+        }
 
-        ticketManager.onTicketComplete(ticketID, averageRating);
+        float adjustedEarnings = rawEarnings * BalanceSheet.ratingToMultiplier[averageRating];
+        dailyEarnings += adjustedEarnings;
+
+        int freshnessRating = (int)Math.Round(averageFreshness);
+        int customerReactionId = 0;
+
+        if (freshnessRating < 3)
+        {
+            customerReactionId = (int)ID.ReactionID.Disgusted;
+        } else if (averageRating < 3)
+        {
+            customerReactionId = (int)ID.ReactionID.Angry;
+        } else if (averageRating == 3)
+        {
+            customerReactionId = (int)ID.ReactionID.Satisfied;
+        } else if (averageRating == 4)
+        {
+            customerReactionId = (int)ID.ReactionID.Great;
+        } else if (averageRating == 5)
+        {
+            customerReactionId = (int)ID.ReactionID.Perfect;
+        }
+
+        ticketManager.onTicketComplete(ticketID, customerReactionId);
+
+        return (int)Math.Round(adjustedEarnings);
 
     }
 
