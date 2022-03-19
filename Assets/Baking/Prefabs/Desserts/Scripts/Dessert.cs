@@ -18,6 +18,12 @@ public class Dessert : MonoBehaviour
     [SerializeField] int pullApartResultCount;
     [SerializeField] Combinations combinations;
 
+    [SerializeField] GameObject[] pullApartFXs;
+    [SerializeField] GameObject[] combineFXs;
+    [SerializeField] GameObject expirationExplosion;
+    [SerializeField] GameObject stinkiness;
+    AudioSource incorrectSound;
+
     private Timer timer;
     private List<float> timesToDiminishFreshness;
 
@@ -29,14 +35,16 @@ public class Dessert : MonoBehaviour
         {
             Debug.Log("Dessert incorrectly serialized! Bugs may ensue.");
         }
+        incorrectSound = GetComponent<AudioSource>();
         Grabbable grabbable = GetComponent<Grabbable>();
         grabbable.body = GetComponent<Rigidbody>();
         grabbable.OnJointBreak.AddListener(onPullApart);
 
         freshness = 5;
         timesToDiminishFreshness = new List<float>();
-        timer = gameObject.AddComponent<Timer>();
+        timer = gameObject.GetComponent<Timer>();
         timer.setTimer(BalanceSheet.cakeFreshnessTime);
+        timer.timeUpEvent.AddListener(expire);
 
 
         for (int i = 0; i < BalanceSheet.freshnessDiminishTimeMultipliers.Length; i++)
@@ -49,24 +57,22 @@ public class Dessert : MonoBehaviour
     {
         if (timesToDiminishFreshness.Count > 0 && Time.time > timesToDiminishFreshness[0])
         {
-            Debug.Log("Time is " + Time.time);
-
             freshness--;
-            Debug.Log("Quality is " + freshness);
+            if (freshness == 2)
+            {
+                GameObject obj = Instantiate(stinkiness, transform);
+                obj.transform.localPosition = Vector3.zero;
+            }
             timesToDiminishFreshness.RemoveAt(0);
         }
 
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            Debug.Log(freshness);
-        }
     }
 
     void onPullApart(Autohand.Hand hand, Grabbable grabbable)
     {
         if (pullApartResult == null)
         {
-            //SoundManager make a sound
+            incorrectSound.Play();
         }
         else
         {
@@ -90,6 +96,9 @@ public class Dessert : MonoBehaviour
                 Instantiate(pullApartResult, transform.position + new Vector3(0, 0, 0.25f), Quaternion.identity);
                 Instantiate(pullApartResult, transform.position + new Vector3(0, 0, -0.25f), Quaternion.identity);
             }
+
+            Instantiate(pullApartFXs[UnityEngine.Random.Range(0, pullApartFXs.Length)], transform.position, Quaternion.identity);
+
             Destroy(gameObject);
         }
     }
@@ -119,18 +128,22 @@ public class Dessert : MonoBehaviour
                 Instantiate(combinations.DessertSumObjects[addableIndex],
                     Vector3.Lerp(transform.position, collision.transform.position, 0.5f),
                     Quaternion.identity);
+                Instantiate(combineFXs[UnityEngine.Random.Range(0, combineFXs.Length)],
+                    Vector3.Lerp(transform.position, collision.transform.position, 0.5f),
+                    Quaternion.identity);
                 Destroy(collision.gameObject);
                 Destroy(gameObject);
             } else
             {
-                //TODO play a bad sound
+                incorrectSound.Play();
             }
         }
     }
 
-    public void onPullApartFailure()
+    public void expire()
     {
-        //TODO play a bad sound
+        Instantiate(expirationExplosion, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 
     public int getCakeShape()

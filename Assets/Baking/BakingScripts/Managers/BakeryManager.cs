@@ -93,7 +93,6 @@ public class BakeryManager : GameManager
     private void dailyActivitiesUpdate()
     {
         infoboard.updateDayTimerUI();
-        moneyDisplay.updateCashDisplay(dailyEarnings);
 
         if (Time.time > nextCustomerSpawnTime)
         {
@@ -178,6 +177,7 @@ public class BakeryManager : GameManager
         }
 
         ticketManager.onTicketComplete(ticketID, customerReactionId);
+        moneyDisplay.updateCashDisplay(dailyEarnings);
 
         return (int)Math.Round(adjustedEarnings);
 

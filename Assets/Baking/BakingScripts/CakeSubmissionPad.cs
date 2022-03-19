@@ -23,6 +23,7 @@ public class CakeSubmissionPad : MonoBehaviour
             var main = explosion.GetComponent<ParticleSystem>().main;
             main.maxParticles = cash;
             collidedBox.transform.GetComponent<Grabbable>().ForceHandsRelease();
+
             Destroy(collidedBox.gameObject);
         }
     }
