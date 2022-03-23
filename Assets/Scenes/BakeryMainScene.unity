@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3729477798036674136, guid: 96e9ee59f73314c65939547f8ef98a5f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5932ca79eba6c4b15928c92e4db0b64e, type: 2}
     - target: {fileID: 5347641612175058913, guid: 96e9ee59f73314c65939547f8ef98a5f, type: 3}
       propertyPath: showAdvancedEvents
       value: 1
@@ -2053,7 +2057,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 723673a175b874d6abff71cf304516ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ticketManager: {fileID: 340573656}
 --- !u!1001 &178624005
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3441,6 +3444,11 @@ MonoBehaviour:
   - {fileID: 173291432}
   - {fileID: 848730494}
   - {fileID: 1111602906}
+  wallTextures:
+  - {fileID: 2800000, guid: ccb9111526e1c13468f02b1c03776777, type: 3}
+  - {fileID: 2800000, guid: d2658fabe40d01649abca44ef7aa1a61, type: 3}
+  - {fileID: 2800000, guid: 52b99d64baa59234e83d32cd8818704e, type: 3}
+  - {fileID: 2800000, guid: 8bd9f047100a82c4cb50b4ae49bbc86c, type: 3}
   floors:
   - {fileID: 621759331}
   - {fileID: 1540149795}
@@ -3458,6 +3466,9 @@ MonoBehaviour:
   - {fileID: 786875977}
   - {fileID: 900127845}
   - {fileID: 630922036}
+  floorTextures:
+  - {fileID: 2800000, guid: afcb53d90181c6a4282a55c176236533, type: 3}
+  - {fileID: 2800000, guid: 5afcfbbc56406fd47a8bb6e1a3da98dd, type: 3}
   bakeryManager: {fileID: 340573657}
 --- !u!1 &343663969
 GameObject:
@@ -6888,7 +6899,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &698861204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9675,6 +9686,14 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 5773804671790956035, guid: 8b39a540970079145b70d8a57a7a06f4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5773804671790956035, guid: 8b39a540970079145b70d8a57a7a06f4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e9aa83ec50652429b8fbc97a1bb71ae6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b39a540970079145b70d8a57a7a06f4, type: 3}
 --- !u!4 &921760472 stripped
@@ -20595,7 +20614,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 297602103752395642, guid: e8f009ae862b8604f9283f5a009c4e90, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 297602103752395643, guid: e8f009ae862b8604f9283f5a009c4e90, type: 3}
       propertyPath: m_RootOrder

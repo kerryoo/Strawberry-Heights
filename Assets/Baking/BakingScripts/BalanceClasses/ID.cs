@@ -94,4 +94,18 @@ public class ID
         RedVelvet = 5,
         Rainbow = 6
     }
+
+    public enum wallID
+    {
+        wallA = 0,
+        wallB = 1,
+        wallC = 2,
+        wallD = 3
+    }
+
+    public enum floorID
+    {
+        floorA = 0,
+        floorB = 1
+    }
 }
