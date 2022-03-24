@@ -519,7 +519,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 272.5, y: 0}
   m_SizeDelta: {x: 0, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &42198323
@@ -6153,7 +6153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -526, y: -367}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &445338101
@@ -21797,15 +21797,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7836871087081984541, guid: af1b5ffdc9c08d147ab47f7663cdadb3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.92
+      value: -34.3
       objectReference: {fileID: 0}
     - target: {fileID: 7836871087081984541, guid: af1b5ffdc9c08d147ab47f7663cdadb3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.1199973
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 7836871087081984541, guid: af1b5ffdc9c08d147ab47f7663cdadb3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.26
+      value: -48.5
       objectReference: {fileID: 0}
     - target: {fileID: 7836871087081984541, guid: af1b5ffdc9c08d147ab47f7663cdadb3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -27425,12 +27425,24 @@ MonoBehaviour:
   - {fileID: 2810617342520331498, guid: 8bb533779ec0b4b7f91afb50df9199b7, type: 3}
   - {fileID: 315278201482111174, guid: ee37537048fe44bc08b1e8e1003e15da, type: 3}
   - {fileID: 3337224576424103888, guid: 3db3d9479351f43fbbe05e73cea2d7ea, type: 3}
+  - {fileID: 7828894955942984338, guid: 307765560226b49c7bebe7670872017a, type: 3}
+  - {fileID: 5785740258500396534, guid: 4480053db2ea541039c28a4e71a4d618, type: 3}
+  - {fileID: 8329026860392491271, guid: 4e1b3f179077c422a87eed3ae5d1eab2, type: 3}
+  - {fileID: 1889631585720528674, guid: b6aa3531a21754761b0cab68c339db00, type: 3}
   startCarPos1: {x: -30, y: -2, z: 22}
-  startCarPos2: {x: 40, y: -2, z: 20}
+  startCarPos2: {x: 40, y: -2, z: 19}
   carRotate: {x: 0, y: 90, z: 0}
   carVelocity: {x: 0, y: 0, z: 5}
   maxPos: 50
   minPos: -40
+  clouds:
+  - {fileID: 2949953784013212006, guid: 1a7dd0ed23840408385da7d88dcb5a74, type: 3}
+  - {fileID: 2999584212939900921, guid: 3ee0716674f364c689b1f35c997011c6, type: 3}
+  - {fileID: 788882544909034033, guid: 58dc32035b4d74bb089f35f27df7d1a3, type: 3}
+  - {fileID: 2150714367225559718, guid: 4abc874a612bb4bd08c601d190cf984b, type: 3}
+  minXYZ: {x: -55, y: 35, z: -70}
+  maxXYZ: {x: 85, y: 100, z: 70}
+  cloudVelcity: {x: 1, y: 0, z: 1}
 --- !u!1001 &2132528875
 PrefabInstance:
   m_ObjectHideFlags: 0
