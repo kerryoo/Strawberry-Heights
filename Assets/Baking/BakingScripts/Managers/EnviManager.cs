@@ -9,12 +9,15 @@ public class EnviManager : MonoBehaviour
     [SerializeField] Vector3 startCarPos2;
     [SerializeField] Vector3 carRotate;
     [SerializeField] Vector3 carVelocity;
+    [SerializeField] int maxPos;
+    [SerializeField] int minPos;
 
     Dictionary<GameObject, Vector3> existingCars = new Dictionary<GameObject, Vector3>();
     // Start is called before the first frame update
     private void Start()
     {
-        InvokeRepeating("spawn", 1f,1f);
+        System.Random rnd = new System.Random();
+        InvokeRepeating("spawn", rnd.Next(1, 10), rnd.Next(1, 10));
     }
 
     private void Update()
@@ -24,14 +27,20 @@ public class EnviManager : MonoBehaviour
             spawnCar(startCarPos1, carVelocity, carRotate);
             spawnCar(startCarPos2, carVelocity, -carRotate);
         }
+        HashSet<GameObject> toDestroy = new HashSet<GameObject>();
         foreach(KeyValuePair<GameObject, Vector3> car in existingCars)
         {
             car.Key.transform.Translate(car.Value * Time.deltaTime);
-            if (car.Key.transform.position.x < -40 || car.Key.transform.position.x > 50)
+            
+            if (car.Key.transform.position.x < minPos || car.Key.transform.position.x > maxPos)
             {
-                existingCars.Remove(car.Key);
-                Destroy(car.Key);
+                toDestroy.Add(car.Key);
             }
+        }
+        foreach(GameObject car in toDestroy)
+        {
+            existingCars.Remove(car);
+            Destroy(car);
         }
     }
 
