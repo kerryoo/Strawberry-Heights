@@ -27433,16 +27433,18 @@ MonoBehaviour:
   startCarPos2: {x: 40, y: -2, z: 19}
   carRotate: {x: 0, y: 90, z: 0}
   carVelocity: {x: 0, y: 0, z: 5}
-  maxPos: 50
-  minPos: -40
+  carLifeSpan: 20
   clouds:
   - {fileID: 2949953784013212006, guid: 1a7dd0ed23840408385da7d88dcb5a74, type: 3}
   - {fileID: 2999584212939900921, guid: 3ee0716674f364c689b1f35c997011c6, type: 3}
   - {fileID: 788882544909034033, guid: 58dc32035b4d74bb089f35f27df7d1a3, type: 3}
   - {fileID: 2150714367225559718, guid: 4abc874a612bb4bd08c601d190cf984b, type: 3}
-  minXYZ: {x: -55, y: 35, z: -70}
-  maxXYZ: {x: 85, y: 100, z: 70}
+  numberCloud: 50
+  cloudSpawnFreq: 3
+  minXYZ: {x: -200, y: 35, z: -200}
+  maxXYZ: {x: 200, y: 100, z: 200}
   cloudVelcity: {x: 1, y: 0, z: 1}
+  cloudLifeSpan: 300
 --- !u!1001 &2132528875
 PrefabInstance:
   m_ObjectHideFlags: 0
