@@ -5,7 +5,12 @@ using Autohand;
 
 public class TestManager : MonoBehaviour
 {
-    [SerializeField] Box box;
+    int index = 0;
+
+    //Event
+    public UpgradeEvent upgradeEvent;
+
+    UpgradeManager upgradeManager = new UpgradeManager().GetComponent<UpgradeManager>();
     // Start is called before the first frame update
     void Start()
     {
@@ -15,9 +20,10 @@ public class TestManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            box.GetComponent<Grabbable>().OnJointBreak.Invoke(null, null);
+            upgradeEvent.Invoke(index);
+            index += 1;
         }
     }
 }

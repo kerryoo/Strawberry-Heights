@@ -18,7 +18,11 @@ EditorBuildSettings:
     path: Assets/AutoHand/Examples/Scenes/Oculus Integration/Demo.unity
     guid: f077d52fe9b27704b9cfab692a674a7a
   m_configObjects:
-    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: cf2965ce4195d4c2c95308e36893fca3, type: 2}
-    Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 387f5bfa85c4e4517bc49c6e1fec80d5, type: 2}
-    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 2e1a693b5770641a289bd39d28f90743, type: 2}
-    xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: 08068bc73304443439acda971b83a3e3, type: 2}
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: cf2965ce4195d4c2c95308e36893fca3,
+      type: 2}
+    Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 387f5bfa85c4e4517bc49c6e1fec80d5,
+      type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 2e1a693b5770641a289bd39d28f90743,
+      type: 2}
+    xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: 08068bc73304443439acda971b83a3e3,
+      type: 2}
