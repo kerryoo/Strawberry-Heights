@@ -6,7 +6,3 @@ Our game is a single player cooking simulation VR game (what a mouthful) where t
 
 ### Our Team and Contributions
 We are currently a group of Vanderbilt students part of the organization **Change++** (linked [here](https://www.changeplusplus.org)). We aren't looking for contributions at the moment, but we may in the future!
-
-### Important Notes (for developers)
-- The most important scene for testing is Assets/TestScenes/BakeryTestScenes
-- All relevant scripts for the Bakery Game are in Assets/Baking/BakingScripts. The manager scripts are the foundation for the game.
